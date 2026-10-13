@@ -131,7 +131,13 @@ export const portfolioData = {
       keyTakeaways: "Gained practical experience implementing multimodal document parsing, Next.js App Router state management, and building software that directly serves institutional compliance workflows.",
       githubUrl: "https://github.com/saleemshaik2005/CBIT-Activity-Points",
       liveUrl: "https://cbit-activity-points.vercel.app",
-      image: "/images/projects/cbit-crest.png"
+      image: "/images/projects/cbit_activity_login.png",
+      subImage: "/images/projects/cbit_activity_ocr.png",
+      screenshots: [
+        { url: "/images/projects/cbit_activity_login.png", caption: "Student Portal Login & Role-Based Authentication" },
+        { url: "/images/projects/cbit_activity_ocr.png", caption: "Multimodal AI OCR Certificate Verification & Forensics" },
+        { url: "/images/projects/cbit_activity_upload.png", caption: "Institutional AI Batch Activity Certificate Upload Engine" }
+      ]
     },
     {
       id: "inspack-legal-metrology",
