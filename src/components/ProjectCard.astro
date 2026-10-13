@@ -108,26 +108,41 @@ const { project } = Astro.props;
       </summary>
 
       <div class="pt-3 space-y-3">
-        <!-- Architecture Diagram Preview if available -->
-        {project.image && !project.image.includes('cbit-crest') && (
-          <div class="rounded-lg overflow-hidden border border-[#D4BC8E] bg-white p-1">
-            <img
-              src={project.image}
-              alt={`${project.title} Architecture Diagram`}
-              class="w-full max-h-56 object-contain"
-              loading="lazy"
-            />
+        <!-- Verified Screenshots & Architecture Gallery -->
+        {project.screenshots && project.screenshots.length > 0 ? (
+          <div class="space-y-2 pt-1">
+            <div class="text-[11px] font-mono uppercase font-bold text-[#84592B]">
+              Verified App UI Screenshots:
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {project.screenshots.map((shot) => (
+                <div class="rounded-xl overflow-hidden border border-[#D4BC8E] bg-[#F5ECDA]/50 p-1.5 shadow-2xs">
+                  <a href={shot.url} target="_blank" rel="noopener noreferrer" class="block group/shot">
+                    <img
+                      src={shot.url}
+                      alt={shot.caption}
+                      class="w-full h-32 object-cover object-top rounded-lg group-hover/shot:scale-[1.02] transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </a>
+                  <p class="text-[10px] font-mono text-[#74563E] mt-1.5 px-0.5 truncate font-medium" title={shot.caption}>
+                    {shot.caption}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        )}
-        {project.subImage && (
-          <div class="rounded-lg overflow-hidden border border-[#D4BC8E] bg-white p-1">
-            <img
-              src={project.subImage}
-              alt={`${project.title} Workflow Diagram`}
-              class="w-full max-h-56 object-contain"
-              loading="lazy"
-            />
-          </div>
+        ) : (
+          project.subImage && (
+            <div class="rounded-lg overflow-hidden border border-[#D4BC8E] bg-white p-1">
+              <img
+                src={project.subImage}
+                alt={`${project.title} Diagram`}
+                class="w-full max-h-56 object-contain"
+                loading="lazy"
+              />
+            </div>
+          )
         )}
 
         <div class="p-3 rounded-lg bg-[#FAF4E8] border border-[#E8D1A7]">

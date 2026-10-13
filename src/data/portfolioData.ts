@@ -16,6 +16,7 @@ export interface Project {
   image?: string;
   subImage?: string;
   badge?: string;
+  screenshots?: { url: string; caption: string }[];
 }
 
 export interface SkillCategory {
@@ -147,8 +148,14 @@ export const portfolioData = {
       limitations: "Requires well-lit, non-reflective multi-angle photos for accurate PDP numeral height measurement; offline camera feed requires WebAssembly OCR acceleration.",
       keyTakeaways: "Learned how to translate complex statutory legal rules into deterministic validation algorithms and design intuitive viewfinder guides for field inspectors.",
       githubUrl: "https://github.com/saleemshaik2005/Software-System-to-check-compliance-of-Packaged-Commodities-under-Legal-Metrology-Rules-2011",
-      image: "/images/projects/inspack_architecture.png",
-      subImage: "/images/projects/inspack_workflow.png"
+      image: "/images/projects/inspack_screenshot_main.png",
+      subImage: "/images/projects/inspack_screenshot_audit.png",
+      screenshots: [
+        { url: "/images/projects/inspack_screenshot_audit.png", caption: "Statutory Compliance Audit (Pintola Packaging 100/100 Score)" },
+        { url: "/images/projects/inspack_screenshot_modules.png", caption: "8 Direct Portals: Scan Studio, Batch Catalog & Surveillance" },
+        { url: "/images/projects/inspack_architecture.png", caption: "System Architecture & Legal Metrology Inspection Pipeline" },
+        { url: "/images/projects/inspack_workflow.png", caption: "Field Inspector & Verification Workflow" }
+      ]
     },
     {
       id: "cbit-lost-found-ai",
@@ -165,7 +172,12 @@ export const portfolioData = {
       limitations: "Hybrid formula weights require ongoing calibration based on campus traffic; image storage is bounded by Supabase storage quotas.",
       keyTakeaways: "Integrating vector similarity search into relational databases, implementing strict RLS security boundaries, and designing user-centric anti-fraud challenges.",
       githubUrl: "https://github.com/saleemshaik2005/Portal-for-retrival-of-lost-items-in-the-college-CBIT",
-      image: "/images/projects/cbit-campus-map.png"
+      image: "/images/projects/lostfound_screenshot_hero.png",
+      subImage: "/images/projects/lostfound_screenshot_gemini.png",
+      screenshots: [
+        { url: "/images/projects/lostfound_screenshot_gemini.png", caption: "Gemini AI Multimodal Structured Attribute Extraction" },
+        { url: "/images/projects/lostfound_screenshot_map.png", caption: "Interactive Official CBIT Campus Map with Academic Building Pins" }
+      ]
     },
     {
       id: "traffic-accident-analysis",
