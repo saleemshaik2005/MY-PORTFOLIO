@@ -9,28 +9,28 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="p-6 sm:p-8 rounded-xl bg-white dark:bg-[#0e131f] border border-slate-200 dark:border-slate-800 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+<article class="p-6 sm:p-9 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft mb-8">
   <!-- Card Header -->
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-    <div class="flex items-center gap-2">
-      <span class="px-2.5 py-1 text-xs font-mono font-semibold rounded-md bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+    <div class="flex items-center gap-2.5">
+      <span class="pill bg-[#E8D1A7]/60 border-[#D4BC8E] text-[#743014] font-bold">
         {project.category}
       </span>
-      <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-        {project.status}
+      <span class="text-xs font-mono text-[#84592B] font-medium">
+        ● {project.status}
       </span>
     </div>
     
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-4">
       {project.githubUrl && (
         <a
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-          title="View source code on GitHub"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-[#442D1C] hover:text-[#743014] underline underline-offset-4 decoration-[#D4BC8E] transition-colors"
+          title="View source on GitHub"
         >
-          <span>Repository</span>
+          <span>GitHub Repo</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
           </svg>
@@ -41,8 +41,7 @@ const { project } = Astro.props;
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-xs font-mono text-blue-600 dark:text-blue-400 hover:underline font-semibold"
-          title="View live deployment"
+          class="inline-flex items-center gap-1 text-xs font-bold text-[#743014] hover:underline"
         >
           <span>Live Demo ↗</span>
         </a>
@@ -51,74 +50,74 @@ const { project } = Astro.props;
   </div>
 
   <!-- Title & Tagline -->
-  <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+  <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#442D1C] mb-2.5">
     {project.title}
   </h3>
-  <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-medium">
+  <p class="text-base text-[#74563E] leading-relaxed mb-6 font-medium">
     {project.tagline}
   </p>
 
   <!-- Deep Dive Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
     <!-- Problem Context -->
-    <div class="p-4 rounded-lg bg-slate-50 dark:bg-[#131926] border border-slate-200/70 dark:border-slate-800/80">
-      <div class="text-xs font-mono uppercase text-slate-500 dark:text-slate-400 font-semibold mb-1">
+    <div class="p-4 rounded-xl bg-[#F5ECDA]/70 border border-[#E8D1A7]">
+      <div class="text-[11px] font-mono uppercase text-[#84592B] font-bold mb-1">
         Problem Statement
       </div>
-      <p class="text-slate-700 dark:text-slate-300">
+      <p class="text-[#442D1C] text-xs sm:text-sm leading-relaxed">
         {project.problem}
       </p>
     </div>
 
     <!-- Personal Contribution -->
-    <div class="p-4 rounded-lg bg-slate-50 dark:bg-[#131926] border border-slate-200/70 dark:border-slate-800/80">
-      <div class="text-xs font-mono uppercase text-slate-500 dark:text-slate-400 font-semibold mb-1">
-        Implementation & My Contribution
+    <div class="p-4 rounded-xl bg-[#F5ECDA]/70 border border-[#E8D1A7]">
+      <div class="text-[11px] font-mono uppercase text-[#84592B] font-bold mb-1">
+        Architecture & My Contribution
       </div>
-      <p class="text-slate-700 dark:text-slate-300">
+      <p class="text-[#442D1C] text-xs sm:text-sm leading-relaxed">
         {project.myContribution}
       </p>
     </div>
   </div>
 
-  <!-- Results & Data Provenance -->
-  <div class="mb-6 p-4 rounded-lg bg-blue-50/50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-sm">
+  <!-- Verified Results & Data Provenance -->
+  <div class="mb-6 p-4 rounded-xl bg-[#E8D1A7]/30 border border-[#D4BC8E] text-xs sm:text-sm">
     <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-      <span class="text-xs font-mono uppercase font-bold text-blue-900 dark:text-blue-300">
+      <span class="font-mono uppercase font-bold text-[#743014] text-[11px]">
         Verified Outcomes & Metrics
       </span>
       {project.dataSources && (
-        <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
-          Dataset: {project.dataSources}
+        <span class="text-[11px] font-mono text-[#84592B]">
+          Provenance: {project.dataSources}
         </span>
       )}
     </div>
-    <p class="text-slate-800 dark:text-slate-200 font-medium">
+    <p class="text-[#442D1C] font-medium leading-relaxed">
       {project.metricsOrOutcomes}
     </p>
   </div>
 
-  <!-- Intellectual Honesty: Limitations & Takeaways -->
-  <div class="p-4 rounded-lg bg-amber-50/40 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 text-xs sm:text-sm text-slate-700 dark:text-slate-300 mb-6">
-    <div class="flex items-center gap-1.5 text-amber-800 dark:text-amber-400 font-mono font-semibold uppercase text-xs mb-1">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <!-- Critical Reflection / Limitations Box -->
+  <div class="p-4 rounded-xl bg-[#FAF4E8] border border-[#D4BC8E]/70 text-xs sm:text-sm mb-6">
+    <div class="flex items-center gap-1.5 text-[#743014] font-mono font-bold uppercase text-[11px] mb-1.5">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
       </svg>
-      <span>Limitations & Critical Reflection</span>
+      <span>Limitations & Intellectual Honesty</span>
     </div>
-    <p class="mb-2 text-slate-700 dark:text-slate-300">
-      <strong class="font-semibold text-slate-900 dark:text-slate-100">Trade-offs & Constraints:</strong> {project.limitations}
+    <p class="mb-1.5 text-[#74563E]">
+      <strong class="font-bold text-[#442D1C]">Known Trade-off:</strong> {project.limitations}
     </p>
-    <p class="text-slate-700 dark:text-slate-300">
-      <strong class="font-semibold text-slate-900 dark:text-slate-100">Takeaway:</strong> {project.keyTakeaways}
+    <p class="text-[#74563E]">
+      <strong class="font-bold text-[#442D1C]">Takeaway:</strong> {project.keyTakeaways}
     </p>
   </div>
 
   <!-- Tech Stack Badges -->
-  <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
-    <span class="text-xs font-mono text-slate-400 dark:text-slate-500 mr-1">Stack:</span>
+  <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-[#E8D1A7]">
+    <span class="text-xs font-mono text-[#84592B] font-bold mr-1">Stack:</span>
     {project.stack.map(tech => (
-      <span class="px-2 py-0.5 text-xs font-mono rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+      <span class="pill py-0.5 px-2.5 text-xs bg-[#F5ECDA] text-[#442D1C]">
         {tech}
       </span>
     ))}

@@ -1,0 +1,21 @@
+---
+// Marquee.astro
+import { portfolioData } from '../data/portfolioData';
+
+const { marqueeKeywords } = portfolioData;
+// Repeat keywords so the seamless marquee has no gaps
+const repeatedKeywords = [...marqueeKeywords, ...marqueeKeywords];
+---
+
+<div class="relative w-full overflow-hidden py-4 bg-[#E8D1A7]/40 border-b border-[#D4BC8E] select-none">
+  <div class="marquee-track flex items-center gap-6">
+    {repeatedKeywords.map((keyword) => (
+      <div class="flex items-center gap-6 shrink-0">
+        <span class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#442D1C]/80 font-mono">
+          {keyword}
+        </span>
+        <span class="text-[#84592B] text-xs">✦</span>
+      </div>
+    ))}
+  </div>
+</div>

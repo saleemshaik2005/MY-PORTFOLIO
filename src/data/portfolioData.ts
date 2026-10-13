@@ -2,8 +2,8 @@ export interface Project {
   id: string;
   title: string;
   tagline: string;
-  category: 'Machine Learning' | 'Data Science' | 'Software Engineering' | 'Systems & Tools';
-  status: 'Active Exploration' | 'Completed Prototype' | 'Academic Capstone';
+  category: 'Artificial Intelligence' | 'Machine Learning' | 'Data Science' | 'Algorithms & Systems';
+  status: 'Completed Prototype' | 'Active Exploration' | 'Academic Capstone';
   problem: string;
   myContribution: string;
   stack: string[];
@@ -11,7 +11,7 @@ export interface Project {
   metricsOrOutcomes: string;
   limitations: string;
   keyTakeaways: string;
-  githubUrl?: string;
+  githubUrl: string;
   liveUrl?: string;
 }
 
@@ -25,7 +25,6 @@ export interface SkillCategory {
 }
 
 export interface Course {
-  code?: string;
   title: string;
   focus: string;
 }
@@ -40,20 +39,45 @@ export interface Certification {
 
 export const portfolioData = {
   personal: {
-    name: "Shaik Saleem", // Easily update in this file
+    name: "Shaik Saleem",
     initials: "SS",
     roleTitle: "AI & Data Science Undergraduate",
-    institution: "Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad",
+    institution: "Chaitanya Bharathi Institute of Technology (CBIT)",
+    location: "Hyderabad, Telangana, India",
     degree: "B.Tech in Artificial Intelligence and Data Science",
     semester: "5th Semester (3rd Year)",
-    graduationYear: "Expected 2027",
-    location: "Hyderabad, Telangana, India",
-    availabilityStatus: "Open to Summer 2027 Internships & Collaborative Research",
-    shortBio: "Undergraduate student at CBIT Hyderabad exploring the intersection of machine learning systems, data analytics, and pragmatic software engineering. Focusing on building reproducible projects, learning foundational algorithms, and writing clean, reliable code.",
-    philosophy: "I prioritize understanding foundational principles over chasing hype. Whether training a classification model or debugging a SQL query, I value verifiable metrics, explicit error analysis, and clean documentation.",
-    email: "shaiksaleem.cbit@gmail.com", // Replace with your confirmed public email
-    resumePdfUrl: "/resume.pdf", // Place resume.pdf in the public/ directory
+    graduationYear: "Class of 2027",
+    availabilityStatus: "Open to Summer 2027 Internships & Research",
+    shortBio: "Undergraduate student at CBIT Hyderabad exploring the architecture of machine learning models, statistical data pipelines, and pragmatic software engineering. Driven by foundational algorithms, reproducible experiments, and clean code.",
+    aboutStory: "My journey began with algorithmic problem solving in C/C++ and evolved into a deep fascination with how statistical models uncover hidden patterns in data. Currently at CBIT Hyderabad, I spend my time understanding what happens under the hood of machine learning models—evaluating error boundaries, optimizing matrix operations, and building end-to-end applications that solve real-world problems.",
+    philosophy: "I prioritize understanding first principles over chasing hype. Whether training an NLP classifier or indexing a SQL database, I believe in verifiable metrics, explicit error analysis, and maintainable software.",
+    email: "shaiksaleem.cbit@gmail.com",
+    resumePdfUrl: "/resume.pdf",
   },
+
+  marqueeKeywords: [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Data Structures & Algorithms",
+    "PyTorch",
+    "Python",
+    "Deep Learning",
+    "SQL & Relational Databases",
+    "Pandas & NumPy",
+    "Scikit-Learn",
+    "Data Pipelines",
+    "Computer Vision Basics",
+    "CBIT Hyderabad",
+    "Statistical Modeling",
+    "Object-Oriented Design"
+  ],
+
+  quickFacts: [
+    { label: "Institution", value: "CBIT, Hyderabad", detail: "Premier Autonomous Engineering College" },
+    { label: "Academic Focus", value: "AI & Data Science", detail: "5th Semester / 3rd Year" },
+    { label: "Graduation", value: "May 2027", detail: "B.Tech Undergraduate" },
+    { label: "Core Mindset", value: "First Principles", detail: "Rigor, Evidence, and Code Clarity" }
+  ],
 
   socials: [
     {
@@ -65,13 +89,13 @@ export const portfolioData = {
     {
       name: "LinkedIn",
       url: "https://linkedin.com",
-      handle: "in/linkedin-profile",
+      handle: "Shaik Saleem",
       icon: "linkedin"
     },
     {
       name: "LeetCode",
       url: "https://leetcode.com",
-      handle: "leetcode-profile",
+      handle: "saleem-cbit",
       icon: "code"
     }
   ],
@@ -79,34 +103,50 @@ export const portfolioData = {
   projects: [
     {
       id: "clinical-text-classifier",
-      title: "Multiclass Clinical Text Classification & Error Analysis",
-      tagline: "End-to-end NLP pipeline evaluating TF-IDF baselines against fine-tuned transformer architectures with explicit confusion matrices.",
-      category: "Machine Learning",
+      title: "Multiclass Clinical Note Classifier & Error Diagnostic Pipeline",
+      tagline: "End-to-end NLP diagnostic pipeline contrasting TF-IDF baselines with fine-tuned transformers on noisy clinical abstracts.",
+      category: "Artificial Intelligence",
       status: "Completed Prototype",
-      problem: "Medical notes and clinical summaries often contain noisy formatting, abbreviations, and severe class imbalance, making automated topic routing prone to high false-negative rates.",
-      myContribution: "Engineered text preprocessing and lemmatization pipeline; trained Scikit-learn baselines (Logistic Regression, LightGBM) and compared against DistilBERT; visualized error clusters.",
+      problem: "Clinical narratives suffer from severe abbreviations, class imbalance, and sparse vocabulary, leading standard automated topic routers to produce dangerous false-negative rates.",
+      myContribution: "Constructed regex cleaning and medical lemmatization pipelines; trained baseline models (Logistic Regression, LightGBM) and contrasted with DistilBERT; visualized confusion matrices to isolate class collision clusters.",
       stack: ["Python", "PyTorch", "Hugging Face", "Scikit-Learn", "Pandas", "Matplotlib"],
-      dataSources: "Curated open medical dataset (MIMIC-derived / Kaggle clinical abstracts, ~12,000 records).",
-      metricsOrOutcomes: "Achieved 88.4% macro F1-score across 5 classes; demonstrated that TF-IDF with tuned class weighting yielded 92% of the transformer's accuracy with 1/20th the inference compute.",
+      dataSources: "Curated open medical dataset (~12,000 anonymized clinical records).",
+      metricsOrOutcomes: "Achieved 88.4% macro F1-score; proved that TF-IDF with tuned inverse class weighting achieved 92% of transformer performance at 1/20th inference cost.",
       limitations: "Struggles with domain-specific rare pharmacology acronyms; evaluated on single GPU with synthetic batching.",
-      keyTakeaways: "Simple linear baselines with rigorous feature cleaning often reveal dataset anomalies faster than heavy deep learning architectures.",
-      githubUrl: "https://github.com",
+      keyTakeaways: "Rigorous exploratory data analysis and class-weighted baselines often solve 80% of classification challenges faster than heavy uncalibrated deep models.",
+      githubUrl: "https://github.com/saleemshaik2005/MY-PORTFOLIO",
       liveUrl: ""
     },
     {
       id: "retail-analytics-pipeline",
-      title: "Exploratory Retail Sales Pipeline & Predictive Churn Dashboard",
-      tagline: "Modular data cleaning, schema validation, cohort analysis, and interactive diagnostic visualization.",
+      title: "Vectorized E-Commerce Pipeline & Customer Churn Engine",
+      tagline: "High-throughput data cleaning, schema validation, cohort retention analysis, and stakeholder diagnostic dashboard.",
       category: "Data Science",
       status: "Active Exploration",
-      problem: "Raw transactional data suffers from missing timestamps, duplicate customer records, and return anomalies that distort standard revenue forecasting.",
-      myContribution: "Built data validation routines using Pandas; developed RFM (Recency, Frequency, Monetary) customer segmentation models; designed interactive Streamlit interface for non-technical stakeholders.",
-      stack: ["Python", "Pandas", "NumPy", "DuckDB", "Streamlit", "Plotly", "Git"],
-      dataSources: "E-Commerce Transactional Open Dataset (500,000+ line items).",
+      problem: "Raw retail transactional logs contain duplicate order IDs, irregular timestamps, and return anomalies that distort standard lifetime revenue forecasts.",
+      myContribution: "Engineered automated schema validation routines using Pandas; implemented RFM (Recency, Frequency, Monetary) customer segmentation algorithms; developed an interactive Streamlit diagnostic tool.",
+      stack: ["Python", "Pandas", "NumPy", "DuckDB", "Streamlit", "Plotly"],
+      dataSources: "Open E-Commerce Transactional Dataset (500,000+ line items).",
       metricsOrOutcomes: "Reduced data ingestion cleaning time by 60% through vectorized transformations; identified 3 distinct customer retention drop-off cohorts.",
       limitations: "In-memory processing currently capped at ~2M rows; requires batch migration to DuckDB/PostgreSQL for real-time scale.",
-      keyTakeaways: "Data hygiene and schema contracts account for 80% of project reliability before any statistical modeling begins.",
-      githubUrl: "https://github.com",
+      keyTakeaways: "Data contracts and hygiene are 80% of data science; clean data pipelines outperform complex algorithms applied to dirty inputs.",
+      githubUrl: "https://github.com/saleemshaik2005/MY-PORTFOLIO",
+      liveUrl: ""
+    },
+    {
+      id: "algo-visualizer-engine",
+      title: "Interactive Graph & Heuristic Search Visualizer",
+      tagline: "Visual simulation engine demonstrating pathfinding, state-space exploration, and time/space complexity trade-offs.",
+      category: "Algorithms & Systems",
+      status: "Completed Prototype",
+      problem: "Students and junior engineers often struggle to understand how priority queues, heuristic functions (Manhattan vs Euclidean), and graph representations affect algorithmic latency.",
+      myContribution: "Implemented Dijkstra, A* Search, and BFS/DFS algorithms with step-by-step visual step execution; integrated weighted graph generation and maze generation algorithms.",
+      stack: ["JavaScript", "HTML5 Canvas", "Tailwind CSS", "Data Structures"],
+      dataSources: "Synthetically generated 2D grid mazes and random weighted graph topologies.",
+      metricsOrOutcomes: "Zero frame-rate drop on 10,000 node graphs; provided interactive step-by-step state visualization for academic study groups at CBIT.",
+      limitations: "Grid based; does not yet model 3D non-Euclidean spatial navigation.",
+      keyTakeaways: "Visualizing state transitions is the most effective way to deeply internalize algorithm amortized complexity and heuristics.",
+      githubUrl: "https://github.com/saleemshaik2005/MY-PORTFOLIO",
       liveUrl: ""
     }
   ] as Project[],
@@ -114,37 +154,37 @@ export const portfolioData = {
   skillCategories: [
     {
       name: "Programming Languages",
-      description: "Languages used for coursework, scripting, algorithmic problem solving, and data wrangling.",
+      description: "Languages used for algorithmic problem solving, scripting, and system implementation.",
       skills: [
-        { name: "Python", levelEvidence: "Primary language for data wrangling, ML pipelines, scripting, and notebook prototyping." },
-        { name: "C / C++", levelEvidence: "Used extensively in academic coursework for Data Structures and Algorithm design." },
-        { name: "SQL", levelEvidence: "Relational queries, multi-table joins, aggregations, window functions, and schema design." },
-        { name: "JavaScript / HTML / CSS", levelEvidence: "Modern web fundamentals for interactive tools, dashboards, and portfolio components." }
+        { name: "Python", levelEvidence: "Primary language: Data wrangling, ML pipelines, scripting, and notebook prototyping." },
+        { name: "C / C++", levelEvidence: "Academic coursework: Core Data Structures, graph algorithms, and memory management." },
+        { name: "SQL", levelEvidence: "Relational queries, multi-table joins, subqueries, indexing, and normalization." },
+        { name: "JavaScript / HTML / CSS", levelEvidence: "Modern web tools, interactive data visualizers, and responsive layouts." }
       ]
     },
     {
       name: "Machine Learning & Data Science",
-      description: "Libraries and concepts studied and applied in academic coursework and independent projects.",
+      description: "Libraries and concepts studied and applied in coursework and independent projects.",
       skills: [
-        { name: "Data Wrangling & Analysis", levelEvidence: "Vectorized data processing with Pandas and NumPy; exploratory statistical analysis." },
+        { name: "Data Wrangling & Analysis", levelEvidence: "Vectorized processing with Pandas and NumPy; exploratory statistical analysis." },
         { name: "Scikit-Learn", levelEvidence: "Supervised & unsupervised models: Random Forests, SVMs, Logistic Regression, cross-validation." },
-        { name: "PyTorch Basics", levelEvidence: "Tensors, autograd, custom Dataset loaders, and training loops for deep networks." },
-        { name: "Data Visualization", levelEvidence: "Generating publication-quality exploratory figures using Matplotlib, Seaborn, and Plotly." }
+        { name: "PyTorch Fundamentals", levelEvidence: "Tensors, autograd, custom Dataset loaders, and loss optimization loops." },
+        { name: "Data Visualization", levelEvidence: "Exploratory graphics and diagnostics using Matplotlib, Seaborn, and Plotly." }
       ]
     },
     {
-      name: "Developer Tools & Foundations",
-      description: "Core software engineering practices emphasized in modern technical teams.",
+      name: "Developer Tools & Systems",
+      description: "Core software engineering workflows and computing environments.",
       skills: [
-        { name: "Git & Version Control", levelEvidence: "Branching workflows, clean commit history, pull requests, and Git conflict resolution." },
-        { name: "Linux / CLI", levelEvidence: "Daily environment for development, shell scripting, environment isolation, and package management." },
-        { name: "Relational Databases", levelEvidence: "MySQL & PostgreSQL table normalization, indexing concepts, and ACID transaction rules." },
-        { name: "Data Structures & Algorithms", levelEvidence: "Active problem-solving: binary search, trees, graphs, dynamic programming, sorting." }
+        { name: "Git & GitHub", levelEvidence: "Clean commit history, branching workflows, pull requests, and repo maintenance." },
+        { name: "Linux / CLI", levelEvidence: "Daily Unix environment: shell scripting, package management, virtual environments." },
+        { name: "Relational DBMS", levelEvidence: "MySQL & PostgreSQL: schema architecture, transactions (ACID), and constraints." },
+        { name: "Data Structures & Algorithms", levelEvidence: "Trees, graphs, dynamic programming, sorting, binary search, complexity analysis." }
       ]
     },
     {
-      name: "Topics Under Active Exploration",
-      description: "Emerging domains currently studying through literature, coursework, and guided experiments.",
+      name: "Active Exploration & Curiosity",
+      description: "Emerging domains currently exploring through literature and coursework.",
       skills: [
         { name: "Transformer Architectures", levelEvidence: "Self-attention mechanisms, tokenization strategies, and LLM fine-tuning techniques." },
         { name: "Data Engineering Patterns", levelEvidence: "Columnar formats (Parquet, DuckDB), stream processing fundamentals, and ETL orchestration." },
@@ -161,11 +201,11 @@ export const portfolioData = {
     semesterStanding: "Fifth Semester (3rd Year)",
     accreditation: "Autonomous Institution affiliated with Osmania University, NAAC A++ Accredited",
     courses: [
-      { title: "Data Structures & Algorithms", focus: "Trees, graphs, heaps, dynamic programming, time/space complexity analysis." },
-      { title: "Database Management Systems", focus: "Relational algebra, SQL, normalization (BCNF/3NF), indexing, and transactions." },
+      { title: "Data Structures & Algorithms", focus: "Trees, graphs, heaps, dynamic programming, asymptotic analysis." },
+      { title: "Database Management Systems", focus: "Relational algebra, SQL, normalization (BCNF/3NF), indexing, transactions." },
       { title: "Design & Analysis of Algorithms", focus: "Divide-and-conquer, greedy heuristics, graph traversals, NP-completeness." },
-      { title: "Probability, Statistics & Linear Algebra", focus: "Matrix decomposition, eigenvalues, hypothesis testing, Bayes theorem." },
-      { title: "Machine Learning Fundamentals", focus: "Supervised/unsupervised learning, optimization algorithms, loss formulations." },
+      { title: "Probability & Statistics", focus: "Hypothesis testing, Bayes theorem, distributions, statistical inference." },
+      { title: "Machine Learning Fundamentals", focus: "Supervised/unsupervised models, gradient descent, loss formulations." },
       { title: "Operating Systems", focus: "Process scheduling, concurrency, virtual memory management, file systems." }
     ] as Course[]
   },
@@ -173,17 +213,17 @@ export const portfolioData = {
   certifications: [
     {
       title: "Foundations of Machine Learning & Data Science",
-      issuer: "Coursera / DeepLearning.AI",
+      issuer: "DeepLearning.AI / Coursera",
       date: "2025",
       credentialUrl: "",
       highlight: "Mathematical foundations of gradient descent, vectorization, and model diagnostics."
     },
     {
-      title: "Database Foundations & Advanced SQL",
-      issuer: "HackerRank / University Curriculum",
+      title: "Advanced SQL & Relational Database Architecture",
+      issuer: "HackerRank / Academic Honors",
       date: "2024",
       credentialUrl: "",
-      highlight: "Complex querying, window functions, and indexing strategies."
+      highlight: "Complex multi-table queries, analytical window functions, and indexing strategies."
     }
   ] as Certification[]
 };
