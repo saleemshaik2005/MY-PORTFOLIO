@@ -74,7 +74,7 @@ const { educationHistory, relevantCoursework, certifications } = portfolioData;
         </div>
       </div>
 
-      <!-- Right Column: Coursework & Certifications -->
+      <!-- Right Column: Coursework & Compact Certifications -->
       <div class="md:col-span-6 space-y-8">
         <!-- Relevant Coursework Grid -->
         <div>
@@ -86,7 +86,7 @@ const { educationHistory, relevantCoursework, certifications } = portfolioData;
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {relevantCoursework.map((course) => (
-              <div class="p-4 rounded-xl bg-[#FAF4E8] border border-[#D4BC8E] hover:border-[#84592B] transition-all card-hover shadow-2xs">
+              <div class="p-3.5 rounded-xl bg-[#FAF4E8] border border-[#D4BC8E] hover:border-[#84592B] transition-all card-hover shadow-2xs">
                 <span class="block text-xs font-bold text-[#442D1C] mb-1">
                   {course.title}
                 </span>
@@ -98,29 +98,46 @@ const { educationHistory, relevantCoursework, certifications } = portfolioData;
           </div>
         </div>
 
-        <!-- Certifications -->
+        <!-- Compact Certifications Chips -->
         <div>
-          <h3 class="font-display text-xl font-bold text-[#442D1C] mb-4 flex items-center gap-3">
+          <h3 class="font-display text-xl font-bold text-[#442D1C] mb-3 flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl flex items-center justify-center bg-[#442D1C] text-[#E8D1A7] text-sm">
               🏆
             </div>
-            <span>Certifications & Verified Courses</span>
+            <span>Certifications & Verified Credentials</span>
           </h3>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="flex flex-wrap gap-2 pt-1">
             {certifications.map((cert) => (
-              <div class="p-4 rounded-xl bg-[#FAF4E8] border border-[#D4BC8E] hover:border-[#84592B] transition-all card-hover shadow-soft flex flex-col justify-between">
-                <div>
-                  <span class="text-[10px] font-mono text-[#84592B] font-bold block mb-1">
+              cert.credentialUrl ? (
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FAF4E8] border border-[#D4BC8E] hover:border-[#84592B] hover:bg-[#FFFBF2] text-[#442D1C] text-xs transition-all shadow-2xs hover:shadow-xs focus-visible:outline-2 focus-visible:outline-[#743014] focus-visible:outline-offset-2"
+                  aria-label={`Verify ${cert.title} from ${cert.issuer} (opens in new tab)`}
+                >
+                  <span class="text-[10px] font-mono font-bold text-[#743014] bg-[#743014]/10 px-2 py-0.5 rounded-full shrink-0">
                     {cert.issuer}
                   </span>
-                  <h4 class="text-xs font-bold text-[#442D1C] mb-1 leading-snug">
+                  <span class="font-medium text-[#442D1C] group-hover:text-[#743014] transition-colors leading-snug">
                     {cert.title}
-                  </h4>
-                  <p class="text-[10px] text-[#74563E] leading-snug">
-                    {cert.highlight}
-                  </p>
+                  </span>
+                  <span class="text-[11px] text-[#84592B] group-hover:text-[#743014] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ) : (
+                <div
+                  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FAF4E8] border border-[#D4BC8E]/90 text-[#442D1C] text-xs shadow-2xs"
+                >
+                  <span class="text-[10px] font-mono font-bold text-[#743014] bg-[#743014]/10 px-2 py-0.5 rounded-full shrink-0">
+                    {cert.issuer}
+                  </span>
+                  <span class="font-medium text-[#442D1C] leading-snug">
+                    {cert.title}
+                  </span>
                 </div>
-              </div>
+              )
             ))}
           </div>
         </div>

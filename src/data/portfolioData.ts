@@ -47,7 +47,9 @@ export interface Certification {
   issuer: string;
   date?: string;
   credentialUrl?: string;
-  highlight: string;
+  category?: string;
+  type?: string;
+  highlight?: string;
 }
 
 export const portfolioData = {
@@ -291,19 +293,44 @@ export const portfolioData = {
 
   certifications: [
     {
-      title: "SQL (Intermediate)",
-      issuer: "HackerRank",
-      highlight: "Demonstrated proficiency in complex multi-table joins, subqueries, and aggregation queries."
+      title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+      issuer: "Oracle",
+      date: "January 2026",
+      category: "Artificial Intelligence / Cloud",
+      credentialUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=7DDBE2F2E10CBF32703F9ADFA4812D8667FB40B95B9A0199DEE60F90C0D758E9"
+    },
+    {
+      title: "Data Analytics and Visualization using Microsoft Power BI",
+      issuer: "Pantechelearning",
+      date: "October 2025",
+      category: "Data Analytics / Visualization",
+      type: "Training Certificate"
     },
     {
       title: "Responsive Web Design",
       issuer: "freeCodeCamp",
-      highlight: "Completed foundational curriculum in semantic HTML5, modern CSS3 layouts, and accessible design."
+      date: "May 2026",
+      category: "Web Development",
+      credentialUrl: "https://www.freecodecamp.org/certification/fcc-7946135e-cd61-4680-acdc-43997f1b05c6/responsive-web-design-v9"
     },
     {
-      title: "Microsoft Power BI",
-      issuer: "LinkedIn Learning",
-      highlight: "Trained in data modeling, interactive dashboard construction, and business analytics visualization."
+      title: "SQL (Basic)",
+      issuer: "HackerRank",
+      date: "April 2026",
+      category: "Databases / SQL",
+      credentialUrl: "https://www.hackerrank.com/certificates/d3e4d1122b40"
+    },
+    {
+      title: "Networking Basics",
+      issuer: "Cisco Networking Academy",
+      category: "Computer Networks",
+      credentialUrl: "https://www.netacad.com/recognitions/verify/327baa03-95fc-4d35-b3d9-85d760d1bd76"
+    },
+    {
+      title: "Operating Systems Basics",
+      issuer: "Cisco Networking Academy",
+      category: "Operating Systems",
+      credentialUrl: "https://www.netacad.com/recognitions/verify/ecd948fe-6f03-40b8-9a24-6e9c5ce3ab3b"
     }
   ] as Certification[]
 };
