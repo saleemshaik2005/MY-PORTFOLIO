@@ -5,35 +5,56 @@ import { portfolioData } from '../data/portfolioData';
 const { personal, quickFacts } = portfolioData;
 ---
 
-<section class="py-20 md:py-28 border-b border-[#E8D1A7] bg-[#FAF4E8]/60 relative">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="about" class="py-16 md:py-20 border-b border-[#E8D1A7] bg-[#FAF4E8]/60 relative">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="section-eyebrow mb-3">
       <span>01 // About Me</span>
     </div>
-    
-    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#442D1C] mb-6">
-      Driven by Curiosity, Grounded in <span class="italic font-normal text-[#743014]">Fundamentals</span>.
-    </h2>
 
-    <p class="text-base sm:text-lg text-[#74563E] leading-relaxed mb-12 max-w-3xl">
-      {personal.aboutStory}
-    </p>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+      <!-- Left Column: Story & Philosophy -->
+      <div class="md:col-span-7">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-[#442D1C] leading-none mb-6">
+          Hey there!<br />
+          <span class="font-display italic font-normal text-[#743014]">I'm Saleem</span>
+        </h2>
 
-    <!-- Quick Facts Grid with warm card styling -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {quickFacts.map((fact) => (
-        <div class="p-5 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft">
-          <div class="text-[11px] font-bold text-[#84592B] uppercase tracking-wider mb-1 font-mono">
-            {fact.label}
-          </div>
-          <div class="font-display font-bold text-lg text-[#442D1C] mb-1">
-            {fact.value}
-          </div>
-          <div class="text-xs text-[#74563E]">
-            {fact.detail}
-          </div>
+        <div class="space-y-4 text-base sm:text-lg text-[#74563E] leading-relaxed mb-8">
+          <p>
+            I'm a 5th-semester undergraduate in <strong class="text-[#442D1C]">Artificial Intelligence and Data Science</strong> at <strong class="text-[#442D1C]">{personal.institution}</strong>.
+          </p>
+          <p>
+            My engineering work centers on building reliable systems—from training and benchmarking machine learning models to architecting regulatory computer vision inspection pipelines. I value computational rigor, clean abstractions, and verifiable claims over hype.
+          </p>
         </div>
-      ))}
+
+        <!-- Guiding Philosophy Card -->
+        <div class="p-5 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] shadow-soft">
+          <div class="text-[11px] font-bold text-[#84592B] uppercase tracking-wider mb-1 font-mono">
+            Guiding Philosophy
+          </div>
+          <p class="font-display italic text-base text-[#442D1C]">
+            "{personal.philosophy}"
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Quick Facts 2x2 Grid -->
+      <div class="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {quickFacts.map((fact) => (
+          <div class="p-5 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft">
+            <div class="text-[11px] font-bold text-[#84592B] uppercase tracking-wider mb-1 font-mono">
+              {fact.label}
+            </div>
+            <div class="font-display font-bold text-lg text-[#442D1C] mb-1">
+              {fact.value}
+            </div>
+            <div class="text-xs text-[#74563E]">
+              {fact.detail}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>

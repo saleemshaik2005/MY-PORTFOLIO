@@ -9,33 +9,47 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="p-6 sm:p-9 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft mb-10 overflow-hidden">
-  <!-- Card Header -->
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-    <div class="flex flex-wrap items-center gap-2">
-      <span class="pill bg-[#E8D1A7]/60 border-[#D4BC8E] text-[#743014] font-bold">
+<article class="rounded-3xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft overflow-hidden flex flex-col justify-between">
+  <!-- Card Top: Visual Header / Banner -->
+  <div class="relative h-48 sm:h-52 overflow-hidden bg-[#F5ECDA] border-b border-[#E8D1A7] flex items-center justify-center p-4">
+    {project.image ? (
+      <img
+        src={project.image}
+        alt={`${project.title} Preview`}
+        class={`w-full h-full ${project.image.includes('cbit-crest') ? 'object-contain max-h-32' : 'object-cover'} transition-transform duration-500 hover:scale-105`}
+        loading="lazy"
+      />
+    ) : (
+      <div class="w-full h-full flex items-center justify-center bg-[#FAF4E8] text-[#84592B] font-mono text-xs">
+        {project.category}
+      </div>
+    )}
+
+    <!-- Category Pill (Top Left) -->
+    <div class="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5">
+      <span class="pill py-1 px-3 bg-[#442D1C] text-[#F5ECDA] border-none font-bold text-[11px]">
         {project.category}
       </span>
-      <span class="text-xs font-mono text-[#84592B] font-semibold">
-        ● {project.status}
-      </span>
       {project.badge && (
-        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-[#442D1C] text-[#F5ECDA]">
+        <span class="pill py-1 px-2.5 bg-[#84592B] text-[#F5ECDA] border-none font-bold text-[10px] font-mono">
           {project.badge}
         </span>
       )}
     </div>
-    
-    <div class="flex items-center gap-3">
+
+    <!-- Quick Action Links (Top Right) -->
+    <div class="absolute top-3.5 right-3.5 flex items-center gap-1.5">
       {project.liveUrl && (
         <a
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#743014] hover:bg-[#56230E] text-[#F5ECDA] shadow-xs hover:shadow-md transition-all active:scale-95"
-          title="Launch live deployed application"
+          class="w-8 h-8 rounded-full bg-[#743014] text-[#F5ECDA] flex items-center justify-center hover:bg-[#56230E] shadow-xs hover:scale-110 transition-all active:scale-95"
+          title="Launch Live App"
         >
-          <span>Launch Live App ↗</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
         </a>
       )}
       {project.githubUrl && (
@@ -43,129 +57,94 @@ const { project } = Astro.props;
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-xs font-bold text-[#442D1C] hover:text-[#743014] underline underline-offset-4 decoration-[#D4BC8E] transition-colors"
-          title="View source repository on GitHub"
+          class="w-8 h-8 rounded-full bg-[#442D1C] text-[#E8D1A7] flex items-center justify-center hover:bg-[#2A1B11] shadow-xs hover:scale-110 transition-all active:scale-95"
+          title="View GitHub Repository"
         >
-          <span>GitHub</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
           </svg>
         </a>
       )}
     </div>
   </div>
 
-  <!-- Title & Tagline with Optional Logo / Crest -->
-  <div class="flex items-start gap-4 mb-3">
-    {project.image && project.image.includes('cbit-crest') && (
-      <img
-        src={project.image}
-        alt="CBIT Crest"
-        class="w-14 h-14 object-contain rounded-xl p-1 bg-[#F5ECDA] border border-[#E8D1A7] shrink-0"
-        loading="lazy"
-      />
-    )}
+  <!-- Card Body -->
+  <div class="p-6 flex-1 flex flex-col justify-between">
     <div>
-      <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#442D1C] leading-snug">
-        {project.title}
-      </h3>
-      <p class="text-base text-[#74563E] leading-relaxed mt-1 font-medium">
+      <div class="flex items-center justify-between gap-2 mb-1.5">
+        <h3 class="font-display text-xl sm:text-2xl font-bold tracking-tight text-[#442D1C]">
+          {project.title}
+        </h3>
+        <span class="text-[11px] font-mono text-[#84592B] font-semibold shrink-0">
+          ● {project.status}
+        </span>
+      </div>
+
+      <p class="text-xs sm:text-sm text-[#74563E] leading-relaxed mb-4">
         {project.tagline}
       </p>
-    </div>
-  </div>
 
-  <!-- Featured Technical Architecture Diagrams / Visuals -->
-  {project.image && !project.image.includes('cbit-crest') && (
-    <div class="my-6 p-3 rounded-xl bg-[#F5ECDA]/80 border border-[#E8D1A7] overflow-hidden">
-      <div class="text-[11px] font-mono uppercase text-[#84592B] font-bold mb-2 flex items-center justify-between">
-        <span>System Architecture & Verification Flow</span>
-        <span class="text-[10px] text-[#74563E]">Verified Repository Asset</span>
+      <!-- Key Highlight / Problem Summary -->
+      <div class="p-3 rounded-xl bg-[#F5ECDA]/80 border border-[#E8D1A7] text-xs mb-4">
+        <span class="font-bold text-[#442D1C] block mb-0.5">Problem & Solution:</span>
+        <span class="text-[#74563E] leading-relaxed">{project.problem}</span>
       </div>
-      <div class="rounded-lg overflow-hidden border border-[#D4BC8E]/60 bg-white shadow-2xs">
-        <img
-          src={project.image}
-          alt={`${project.title} Architecture Diagram`}
-          class="w-full max-h-80 object-contain hover:scale-[1.01] transition-transform duration-300"
-          loading="lazy"
-        />
+
+      <!-- Tech Stack Badges -->
+      <div class="flex flex-wrap gap-1.5 mb-4">
+        {project.stack.map(tech => (
+          <span class="pill py-0.5 px-2.5 text-[11px] bg-[#E8D1A7]/40 text-[#442D1C] border-[#D4BC8E]">
+            {tech}
+          </span>
+        ))}
       </div>
-      {project.subImage && (
-        <div class="mt-3 rounded-lg overflow-hidden border border-[#D4BC8E]/60 bg-white shadow-2xs">
-          <img
-            src={project.subImage}
-            alt={`${project.title} User Workflow Diagram`}
-            class="w-full max-h-80 object-contain hover:scale-[1.01] transition-transform duration-300"
-            loading="lazy"
-          />
+    </div>
+
+    <!-- Collapsible Deep Dive / Architecture Drawer -->
+    <details class="group mt-2 pt-3 border-t border-[#E8D1A7]/80 text-xs">
+      <summary class="font-mono font-bold text-[#84592B] hover:text-[#743014] cursor-pointer flex items-center justify-between py-1 select-none">
+        <span>Technical Specs & Architecture</span>
+        <span class="text-sm text-[#743014] group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+
+      <div class="pt-3 space-y-3">
+        <!-- Architecture Diagram Preview if available -->
+        {project.image && !project.image.includes('cbit-crest') && (
+          <div class="rounded-lg overflow-hidden border border-[#D4BC8E] bg-white p-1">
+            <img
+              src={project.image}
+              alt={`${project.title} Architecture Diagram`}
+              class="w-full max-h-56 object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
+        {project.subImage && (
+          <div class="rounded-lg overflow-hidden border border-[#D4BC8E] bg-white p-1">
+            <img
+              src={project.subImage}
+              alt={`${project.title} Workflow Diagram`}
+              class="w-full max-h-56 object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
+
+        <div class="p-3 rounded-lg bg-[#FAF4E8] border border-[#E8D1A7]">
+          <strong class="text-[#442D1C] block mb-1">Architecture & Implementation:</strong>
+          <p class="text-[#74563E] leading-relaxed">{project.myContribution}</p>
         </div>
-      )}
-    </div>
-  )}
 
-  <!-- Deep Dive Grid: Problem & My Contribution -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
-    <!-- Problem Context -->
-    <div class="p-4 rounded-xl bg-[#F5ECDA]/70 border border-[#E8D1A7]">
-      <div class="text-[11px] font-mono uppercase text-[#84592B] font-bold mb-1">
-        Problem Statement
+        <div class="p-3 rounded-lg bg-[#E8D1A7]/30 border border-[#D4BC8E]">
+          <strong class="text-[#743014] block mb-1">Verified Outcomes:</strong>
+          <p class="text-[#442D1C] leading-relaxed">{project.metricsOrOutcomes}</p>
+        </div>
+
+        <div class="p-3 rounded-lg bg-[#FAF4E8] border border-[#E8D1A7]">
+          <strong class="text-[#442D1C] block mb-1">Engineering Reflection & Trade-off:</strong>
+          <p class="text-[#74563E] leading-relaxed">{project.limitations}</p>
+        </div>
       </div>
-      <p class="text-[#442D1C] text-xs sm:text-sm leading-relaxed">
-        {project.problem}
-      </p>
-    </div>
-
-    <!-- Personal Contribution -->
-    <div class="p-4 rounded-xl bg-[#F5ECDA]/70 border border-[#E8D1A7]">
-      <div class="text-[11px] font-mono uppercase text-[#84592B] font-bold mb-1">
-        Architecture & My Contribution
-      </div>
-      <p class="text-[#442D1C] text-xs sm:text-sm leading-relaxed">
-        {project.myContribution}
-      </p>
-    </div>
-  </div>
-
-  <!-- Verified Results & Data Provenance -->
-  <div class="mb-6 p-4 rounded-xl bg-[#E8D1A7]/30 border border-[#D4BC8E] text-xs sm:text-sm">
-    <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-      <span class="font-mono uppercase font-bold text-[#743014] text-[11px]">
-        Verified Outcomes & Technical Highlights
-      </span>
-      {project.dataSources && (
-        <span class="text-[11px] font-mono text-[#84592B]">
-          Data: {project.dataSources}
-        </span>
-      )}
-    </div>
-    <p class="text-[#442D1C] font-medium leading-relaxed">
-      {project.metricsOrOutcomes}
-    </p>
-  </div>
-
-  <!-- Critical Reflection / Limitations Box -->
-  <div class="p-4 rounded-xl bg-[#FAF4E8] border border-[#D4BC8E]/70 text-xs sm:text-sm mb-6">
-    <div class="flex items-center gap-1.5 text-[#743014] font-mono font-bold uppercase text-[11px] mb-1.5">
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-      </svg>
-      <span>Limitations & Engineering Reflection</span>
-    </div>
-    <p class="mb-1.5 text-[#74563E]">
-      <strong class="font-bold text-[#442D1C]">Known Trade-off:</strong> {project.limitations}
-    </p>
-    <p class="text-[#74563E]">
-      <strong class="font-bold text-[#442D1C]">Takeaway:</strong> {project.keyTakeaways}
-    </p>
-  </div>
-
-  <!-- Tech Stack Badges -->
-  <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-[#E8D1A7]">
-    <span class="text-xs font-mono text-[#84592B] font-bold mr-1">Stack:</span>
-    {project.stack.map(tech => (
-      <span class="pill py-0.5 px-2.5 text-xs bg-[#F5ECDA] text-[#442D1C]">
-        {tech}
-      </span>
-    ))}
+    </details>
   </div>
 </article>

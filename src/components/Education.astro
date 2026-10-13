@@ -5,107 +5,101 @@ import { portfolioData } from '../data/portfolioData';
 const { educationHistory, relevantCoursework, certifications } = portfolioData;
 ---
 
-<section id="education" class="py-20 md:py-28 border-b border-[#E8D1A7] relative">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-14">
+<section id="education" class="py-16 md:py-20 border-b border-[#E8D1A7] relative">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
       <div class="section-eyebrow mb-3">
         <span>04 // Academic Foundations</span>
       </div>
-      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#442D1C]">
-        Education & Rigorous <span class="italic font-normal text-[#743014]">Coursework</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-[#442D1C] leading-none">
+        Education & <span class="font-display italic font-normal text-[#743014]">Coursework</span>
       </h2>
-      <p class="mt-3 text-base sm:text-lg text-[#74563E] max-w-2xl">
-        Academic progression from secondary foundations to advanced engineering in Artificial Intelligence and Data Science at CBIT Hyderabad.
+      <p class="mt-3 text-sm sm:text-base text-[#74563E] max-w-xl">
+        Academic progression from secondary foundations to undergraduate engineering in Artificial Intelligence and Data Science at CBIT Hyderabad.
       </p>
     </div>
 
-    <!-- Education Timeline Cards -->
-    <div class="space-y-6 mb-14">
-      {educationHistory.map((edu, idx) => (
-        <div class="p-6 sm:p-8 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft">
-          <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
-            <div>
-              <div class="flex items-center gap-2 mb-1.5">
-                <span class="pill bg-[#E8D1A7]/60 text-[#84592B] font-mono text-[11px]">
+    <!-- 2-Column Responsive Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <!-- Left Column: Education Progression Timeline -->
+      <div class="md:col-span-6 space-y-4">
+        <h3 class="font-display text-xl font-bold text-[#442D1C] mb-4 flex items-center gap-2">
+          <span>Academic Milestones</span>
+        </h3>
+
+        {educationHistory.map((edu, idx) => (
+          <div class="p-5 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <div>
+                <span class="pill py-0.5 px-2.5 bg-[#E8D1A7]/60 text-[#84592B] font-mono text-[10px] mb-1">
                   {idx === 0 ? "Undergraduate Degree" : idx === 1 ? "Intermediate (Class XII)" : "Secondary School (Class X)"}
                 </span>
+                <h4 class="font-display text-lg font-bold text-[#442D1C] mt-1">
+                  {edu.institution}
+                </h4>
+                <p class="text-xs font-semibold text-[#743014] mt-0.5">
+                  {edu.degreeOrQualification}
+                </p>
               </div>
-              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#442D1C]">
-                {edu.institution}
-              </h3>
-              <p class="text-sm font-semibold text-[#743014] mt-0.5">
-                {edu.degreeOrQualification}
-              </p>
-              <p class="text-xs text-[#74563E] mt-1 font-mono">
-                📍 {edu.location}
-              </p>
-            </div>
-            <div class="text-left sm:text-right">
-              <span class="inline-block px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-[#E8D1A7]/80 text-[#442D1C]">
+              <span class="text-[11px] font-mono font-bold bg-[#E8D1A7]/80 text-[#442D1C] px-2.5 py-1 rounded-full shrink-0">
                 {edu.period}
               </span>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-[#74563E] pt-2 border-t border-[#E8D1A7]/60">
+              <span>📍 {edu.location}</span>
               {edu.scoreOrDetail && (
-                <p class="text-xs text-[#84592B] font-bold mt-1.5 font-mono">
-                  {edu.scoreOrDetail}
-                </p>
+                <span class="font-mono font-bold text-[#84592B]">{edu.scoreOrDetail}</span>
               )}
             </div>
           </div>
-          {edu.notes && (
-            <p class="text-xs text-[#74563E] pt-3 border-t border-[#E8D1A7]/60">
-              {edu.notes}
-            </p>
-          )}
+        ))}
+      </div>
+
+      <!-- Right Column: Coursework & Certifications -->
+      <div class="md:col-span-6 space-y-6">
+        <!-- Relevant Coursework Grid -->
+        <div>
+          <h3 class="font-display text-xl font-bold text-[#442D1C] mb-4">
+            Core Curriculum Coursework
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {relevantCoursework.map((course) => (
+              <div class="p-3.5 rounded-xl bg-[#FAF4E8] border border-[#E8D1A7] hover:border-[#D4BC8E] transition-colors shadow-2xs">
+                <span class="block text-xs font-bold text-[#442D1C] mb-0.5">
+                  {course.title}
+                </span>
+                <span class="block text-[11px] text-[#74563E] leading-snug">
+                  {course.focus}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
 
-    <!-- Relevant Coursework Grid -->
-    <div class="mb-14">
-      <div class="section-eyebrow mb-3">
-        <span>Curriculum Modules</span>
-      </div>
-      <h3 class="font-display text-2xl font-bold text-[#442D1C] mb-6">
-        Relevant Coursework at <span class="italic font-normal text-[#84592B]">CBIT</span>
-      </h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {relevantCoursework.map((course) => (
-          <div class="p-4 rounded-xl bg-[#FAF4E8] border border-[#E8D1A7] hover:border-[#D4BC8E] transition-colors shadow-2xs">
-            <span class="block text-sm font-bold text-[#442D1C] mb-1">
-              {course.title}
-            </span>
-            <span class="block text-xs text-[#74563E] leading-relaxed">
-              {course.focus}
-            </span>
+        <!-- Certifications -->
+        <div>
+          <h3 class="font-display text-xl font-bold text-[#442D1C] mb-4">
+            Certifications & Courses
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {certifications.map((cert) => (
+              <div class="p-3.5 rounded-xl bg-[#FAF4E8] border border-[#E8D1A7] shadow-soft flex flex-col justify-between">
+                <div>
+                  <span class="text-[10px] font-mono text-[#84592B] font-bold block mb-0.5">
+                    {cert.issuer}
+                  </span>
+                  <h4 class="text-xs font-bold text-[#442D1C] mb-1">
+                    {cert.title}
+                  </h4>
+                  <p class="text-[10px] text-[#74563E]">
+                    {cert.highlight}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Certifications & Independent Study -->
-    <div>
-      <div class="section-eyebrow mb-3">
-        <span>Verified Credentials</span>
-      </div>
-      <h3 class="font-display text-2xl font-bold text-[#442D1C] mb-6">
-        Courses & Certifications
-      </h3>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {certifications.map((cert) => (
-          <div class="p-5 rounded-xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft flex flex-col justify-between">
-            <div>
-              <span class="text-xs font-mono text-[#84592B] font-bold block mb-1">
-                {cert.issuer}
-              </span>
-              <h4 class="text-sm font-bold text-[#442D1C] mb-2">
-                {cert.title}
-              </h4>
-              <p class="text-xs text-[#74563E] leading-relaxed">
-                {cert.highlight}
-              </p>
-            </div>
-          </div>
-        ))}
+        </div>
       </div>
     </div>
   </div>

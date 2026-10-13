@@ -5,25 +5,25 @@ import { portfolioData } from '../data/portfolioData';
 const { personal, socials } = portfolioData;
 ---
 
-<section id="contact" class="py-20 md:py-28 border-b border-[#E8D1A7] bg-[#FAF4E8]/60 relative">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-14 text-center max-w-xl mx-auto">
+<section id="contact" class="py-16 md:py-20 border-b border-[#E8D1A7] bg-[#FAF4E8]/60 relative">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 text-center max-w-xl mx-auto">
       <div class="section-eyebrow justify-center mb-3">
         <span>05 // Let's Connect</span>
       </div>
-      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#442D1C]">
-        Let's Start a <span class="italic font-normal text-[#743014]">Conversation</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-[#442D1C] leading-none">
+        Get in <span class="font-display italic font-normal text-[#743014]">Touch</span>
       </h2>
-      <p class="mt-3 text-base text-[#74563E]">
-        I am currently open to Summer 2027 technical internships, collaborative AI/ML research, and open-source contributions.
+      <p class="mt-3 text-sm sm:text-base text-[#74563E]">
+        Open to Summer 2027 technical internships, collaborative AI/ML research projects, and full-stack engineering roles.
       </p>
     </div>
 
     <!-- Contact Card -->
-    <div class="max-w-xl mx-auto p-7 sm:p-10 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] shadow-soft text-center card-hover">
+    <div class="max-w-xl mx-auto p-6 sm:p-8 rounded-3xl bg-[#FAF4E8] border border-[#E8D1A7] shadow-soft text-center card-hover">
       <!-- Email Copy Box -->
-      <div class="mb-8">
-        <label for="contact-email-display" class="block text-xs font-mono font-bold text-[#84592B] uppercase tracking-wider mb-2.5">
+      <div class="mb-6">
+        <label for="contact-email-display" class="block text-xs font-mono font-bold text-[#84592B] uppercase tracking-wider mb-2">
           Direct Professional Email
         </label>
         <div class="flex items-center justify-center gap-2 max-w-sm mx-auto">
@@ -32,30 +32,30 @@ const { personal, socials } = portfolioData;
             type="text"
             readonly
             value={personal.email}
-            class="px-4 py-3 rounded-full bg-[#F5ECDA] border border-[#D4BC8E] font-mono text-xs sm:text-sm text-[#442D1C] text-center w-full select-all focus:outline-none"
+            class="px-4 py-2.5 rounded-full bg-[#F5ECDA] border border-[#D4BC8E] font-mono text-xs sm:text-sm text-[#442D1C] text-center w-full select-all focus:outline-none"
           />
           <button
             id="contact-copy-btn"
             type="button"
             data-email={personal.email}
-            class="px-6 py-3 rounded-full bg-[#442D1C] hover:bg-[#743014] text-[#F5ECDA] text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shrink-0 active:scale-95"
+            class="px-5 py-2.5 rounded-full bg-[#442D1C] hover:bg-[#743014] text-[#F5ECDA] text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shrink-0 active:scale-95"
           >
             <span id="contact-copy-label">Copy</span>
           </button>
         </div>
-        <p class="mt-2.5 text-xs text-[#74563E]">
-          Or click to send via <a href={`mailto:${personal.email}`} class="text-[#743014] font-bold underline underline-offset-2">your email client</a>.
+        <p class="mt-2 text-xs text-[#74563E]">
+          Or write to <a href={`mailto:${personal.email}`} class="text-[#743014] font-bold underline underline-offset-2">{personal.email}</a>
         </p>
       </div>
 
       <!-- Outbound Social Cards -->
-      <div class="pt-7 border-t border-[#E8D1A7] grid grid-cols-3 gap-3.5 mb-6">
+      <div class="pt-6 border-t border-[#E8D1A7] grid grid-cols-3 gap-3 mb-4">
         {socials.map((s) => (
           <a
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="p-3.5 rounded-xl border border-[#E8D1A7] hover:border-[#84592B] bg-[#F5ECDA]/80 hover:bg-[#F5ECDA] transition-all group shadow-2xs"
+            class="p-3 rounded-xl border border-[#E8D1A7] hover:border-[#84592B] bg-[#F5ECDA]/80 hover:bg-[#F5ECDA] transition-all group shadow-2xs"
           >
             <span class="block text-xs font-bold text-[#442D1C] group-hover:text-[#743014]">
               {s.name}
@@ -69,7 +69,7 @@ const { personal, socials } = portfolioData;
 
       <!-- Privacy Notice -->
       <p class="text-[11px] font-mono text-[#84592B]">
-        🛡️ Privacy Note: Sensitive personal contact identifiers are omitted to prevent automated scraping.
+        🛡️ Privacy Note: Sensitive personal phone identifiers are omitted to protect privacy.
       </p>
     </div>
   </div>
