@@ -257,7 +257,7 @@ export const portfolioData = {
       degreeOrQualification: "Bachelor of Engineering (B.E.) in Artificial Intelligence and Data Science",
       location: "Gandipet, Hyderabad, Telangana",
       period: "August 2024 – May 2028 (Expected)",
-      scoreOrDetail: "Fifth-Semester Undergraduate",
+      scoreOrDetail: "CGPA: 8.18 · 5th Semester",
       notes: "Autonomous Engineering College affiliated with Osmania University, NAAC A++ Accredited."
     },
     {
