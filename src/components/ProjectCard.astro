@@ -144,16 +144,19 @@ const slides = project.screenshots && project.screenshots.length > 0
         {project.tagline}
       </p>
 
-      <!-- Key Highlight / Problem Summary -->
-      <div class="p-3 rounded-xl bg-[#F5ECDA]/80 border border-[#E8D1A7] text-xs mb-4">
-        <span class="font-bold text-[#442D1C] block mb-0.5">Problem & Solution:</span>
-        <span class="text-[#74563E] leading-relaxed">{project.problem}</span>
+      <!-- Key Highlight / Problem Summary (Warm Caramel Frame) -->
+      <div class="p-3.5 rounded-xl bg-[#E8D1A7]/30 border border-[#D4BC8E] text-xs mb-4">
+        <span class="font-bold text-[#442D1C] block mb-1">Problem & Solution:</span>
+        <span class="text-[#5A3E28] leading-relaxed">{project.problem}</span>
       </div>
 
-      <!-- Tech Stack Badges -->
+      <!-- Tech Stack Badges (Tanmayi Style: Amber / Cocoa Tinted Pills) -->
       <div class="flex flex-wrap gap-1.5 mb-4">
         {project.stack.map(tech => (
-          <span class="pill py-0.5 px-2.5 text-[11px] bg-[#E8D1A7]/40 text-[#442D1C] border-[#D4BC8E]">
+          <span
+            class="pill py-0.5 px-2.5 text-[11px] font-semibold rounded-full transition-all hover:scale-105"
+            style="background: rgba(68, 45, 28, 0.08); color: #84592B; border: 1px solid rgba(132, 89, 43, 0.25);"
+          >
             {tech}
           </span>
         ))}

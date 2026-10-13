@@ -5,38 +5,54 @@ import { portfolioData } from '../data/portfolioData';
 const { skillCategories } = portfolioData;
 ---
 
-<section id="skills" class="py-16 md:py-20 border-b border-[#E8D1A7] bg-[#FAF4E8]/60 relative">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+<section id="skills" class="py-20 md:py-28 border-y border-[#84592B]/40 bg-[#442D1C] text-[#E8D1A7] relative overflow-hidden">
+  <!-- Warm ambient glow blobs (Tanmayi Style) -->
+  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-15 pointer-events-none bg-[#84592B] blur-3xl"></div>
+  <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full opacity-15 pointer-events-none bg-[#9D9167] blur-3xl"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
       <div>
-        <div class="section-eyebrow mb-3">
-          <span>03 // Technical Competence</span>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-px bg-[#9D9167]"></span>
+          <span class="text-xs font-bold tracking-widest uppercase text-[#9D9167] font-mono">03 // Technical Competence</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-[#442D1C] leading-none">
-          Technical <span class="font-display italic font-normal text-[#84592B]">Toolkit</span>
+        <h2 class="text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-none tracking-tighter text-[#E8D1A7]">
+          Technical <span class="font-display italic font-normal text-[#9D9167]">Toolkit</span>
         </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#74563E] max-w-xl">
+        <p class="mt-4 text-sm sm:text-base text-[#E8D1A7]/70 max-w-xl leading-relaxed">
           Core programming languages, machine learning frameworks, data science tooling, and CS fundamentals practiced through engineering projects and curriculum.
         </p>
       </div>
     </div>
 
-    <!-- 2-Column Responsive Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {skillCategories.map((category) => (
-        <div class="p-6 sm:p-7 rounded-3xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft flex flex-col justify-between">
-          <div>
-            <h3 class="font-display text-xl font-bold text-[#442D1C] mb-1">
+    <!-- 2-Column Responsive Grid with Giant Numeric Watermarks -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      {skillCategories.map((category, idx) => (
+        <div
+          class="p-7 sm:p-8 rounded-3xl card-hover shadow-soft flex flex-col justify-between relative overflow-hidden group transition-all"
+          style="background: rgba(232, 209, 167, 0.04); border: 1px solid rgba(232, 209, 167, 0.14);"
+        >
+          <!-- Giant Numeric Watermark -->
+          <span class="absolute top-4 right-6 font-black text-6xl select-none pointer-events-none font-mono text-[#E8D1A7]/10 group-hover:text-[#E8D1A7]/25 transition-colors">
+            0{idx + 1}
+          </span>
+
+          <div class="relative z-10">
+            <h3 class="font-display text-2xl font-bold text-[#E8D1A7] mb-1 tracking-tight group-hover:text-[#FFF8EC] transition-colors">
               {category.name}
             </h3>
-            <p class="text-xs text-[#84592B] mb-4 font-mono">
+            <p class="text-xs text-[#9D9167] mb-5 font-mono">
               {category.description}
             </p>
 
             <!-- Pill Badges Cloud -->
-            <div class="flex flex-wrap gap-2 mb-4">
+            <div class="flex flex-wrap gap-2 mb-6">
               {category.skills.map((skill) => (
-                <span class="pill py-1 px-3 text-xs bg-[#F5ECDA] text-[#442D1C] border-[#D4BC8E] font-semibold">
+                <span
+                  class="pill py-1 px-3 text-xs font-semibold rounded-full transition-all hover:scale-105"
+                  style="background: rgba(157, 145, 103, 0.15); color: #E8D1A7; border: 1px solid rgba(157, 145, 103, 0.3);"
+                >
                   {skill.name}
                 </span>
               ))}
@@ -44,11 +60,14 @@ const { skillCategories } = portfolioData;
           </div>
 
           <!-- Quick Context List -->
-          <div class="pt-3 border-t border-[#E8D1A7]/70 space-y-2 text-xs text-[#74563E]">
+          <div
+            class="pt-4 border-t space-y-2.5 text-xs text-[#E8D1A7]/75 relative z-10"
+            style="border-color: rgba(232, 209, 167, 0.12);"
+          >
             {category.skills.slice(0, 3).map((skill) => (
               <div class="flex items-start gap-2">
-                <span class="text-[#84592B] font-bold shrink-0">•</span>
-                <span><strong class="text-[#442D1C]">{skill.name}:</strong> {skill.levelEvidence}</span>
+                <span class="text-[#9D9167] font-bold shrink-0">•</span>
+                <span><strong class="text-[#E8D1A7] font-semibold">{skill.name}:</strong> {skill.levelEvidence}</span>
               </div>
             ))}
           </div>

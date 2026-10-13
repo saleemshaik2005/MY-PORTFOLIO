@@ -7,14 +7,14 @@ const { marqueeKeywords } = portfolioData;
 const repeatedKeywords = [...marqueeKeywords, ...marqueeKeywords];
 ---
 
-<div class="relative w-full overflow-hidden py-4 bg-[#E8D1A7]/40 border-b border-[#D4BC8E] select-none">
+<div class="relative w-full overflow-hidden py-4 sm:py-5 bg-[#442D1C] border-y border-[#D4BC8E]/40 select-none shadow-inner">
   <div class="marquee-track flex items-center gap-6">
     {repeatedKeywords.map((keyword) => (
       <div class="flex items-center gap-6 shrink-0">
-        <span class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#442D1C]/80 font-mono">
+        <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#E8D1A7] font-mono">
           {keyword}
         </span>
-        <span class="text-[#84592B] text-xs">✦</span>
+        <span class="text-[#9D9167] text-xs">✦</span>
       </div>
     ))}
   </div>

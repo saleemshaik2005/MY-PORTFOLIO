@@ -5,9 +5,14 @@ import { portfolioData } from '../data/portfolioData';
 const { personal, quickFacts } = portfolioData;
 ---
 
-<section id="about" class="py-16 md:py-20 border-b border-[#E8D1A7] bg-[#FAF4E8]/60 relative">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="section-eyebrow mb-3">
+<section id="about" class="py-16 md:py-24 border-b border-[#E8D1A7] bg-[#F5ECDA] relative overflow-hidden">
+  <!-- Warm ambient glow -->
+  <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-[#84592B]/10 blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[#743014]/10 blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="section-eyebrow mb-3 text-[#84592B] flex items-center gap-2">
+      <span class="w-8 h-px bg-[#84592B] inline-block"></span>
       <span>01 // About Me</span>
     </div>
 
@@ -29,7 +34,7 @@ const { personal, quickFacts } = portfolioData;
         </div>
 
         <!-- Guiding Philosophy Card -->
-        <div class="p-5 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] shadow-soft">
+        <div class="p-5 rounded-2xl bg-[#E8D1A7]/35 border-l-4 border-l-[#84592B] border border-[#D4BC8E] shadow-soft">
           <div class="text-[11px] font-bold text-[#84592B] uppercase tracking-wider mb-1 font-mono">
             Guiding Philosophy
           </div>
@@ -39,21 +44,34 @@ const { personal, quickFacts } = portfolioData;
         </div>
       </div>
 
-      <!-- Right Column: Quick Facts 2x2 Grid -->
+      <!-- Right Column: Quick Facts 2x2 Alternating Color Grid (Tanmayi Signature Style) -->
       <div class="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {quickFacts.map((fact) => (
-          <div class="p-5 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft">
-            <div class="text-[11px] font-bold text-[#84592B] uppercase tracking-wider mb-1 font-mono">
-              {fact.label}
+        {quickFacts.map((fact, idx) => {
+          const isDark = idx % 2 === 0;
+          return (
+            <div class={`p-5 rounded-2xl card-hover shadow-soft transition-all ${
+              isDark 
+                ? 'bg-[#442D1C] text-[#E8D1A7] border border-[#743014]' 
+                : 'bg-[#E8D1A7] text-[#442D1C] border border-[#D4BC8E]'
+            }`}>
+              <div class={`text-[11px] font-bold uppercase tracking-wider mb-1 font-mono ${
+                isDark ? 'text-[#9D9167]' : 'text-[#84592B]'
+              }`}>
+                {fact.label}
+              </div>
+              <div class={`font-display font-bold text-lg mb-1 leading-snug ${
+                isDark ? 'text-[#E8D1A7]' : 'text-[#442D1C]'
+              }`}>
+                {fact.value}
+              </div>
+              <div class={`text-xs ${
+                isDark ? 'text-[#E8D1A7]/70' : 'text-[#5A3E28]'
+              }`}>
+                {fact.detail}
+              </div>
             </div>
-            <div class="font-display font-bold text-lg text-[#442D1C] mb-1">
-              {fact.value}
-            </div>
-            <div class="text-xs text-[#74563E]">
-              {fact.detail}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   </div>
