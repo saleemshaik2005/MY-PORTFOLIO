@@ -1,0 +1,20 @@
+---
+// Footer.astro
+import { portfolioData } from '../data/portfolioData';
+
+const currentYear = new Date().getFullYear();
+const { personal } = portfolioData;
+---
+
+<footer class="py-10 border-t border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#0a0d14] text-xs font-mono text-slate-500 dark:text-slate-400">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div>
+      © {currentYear} {personal.name} · B.Tech AI & DS, CBIT Hyderabad
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Back to Top ↑</a>
+      <span>·</span>
+      <span>Built with Astro & Tailwind</span>
+    </div>
+  </div>
+</footer>

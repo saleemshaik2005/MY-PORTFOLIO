@@ -1,0 +1,121 @@
+---
+// Hero.astro
+import { portfolioData } from '../data/portfolioData';
+
+const { personal, socials } = portfolioData;
+---
+
+<section id="about" class="pt-16 pb-16 md:pt-24 md:pb-20 border-b border-slate-200 dark:border-slate-800/80">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Status Badge -->
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 mb-6">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span>{personal.availabilityStatus}</span>
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15] mb-4">
+      Hi, I'm <span class="text-blue-600 dark:text-blue-400">{personal.name}</span>.
+    </h1>
+
+    <h2 class="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300 font-mono mb-6">
+      {personal.roleTitle} · {personal.institution}
+    </h2>
+
+    <!-- Subtitle / Bio -->
+    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6 max-w-3xl">
+      {personal.shortBio}
+    </p>
+
+    <div class="p-4 rounded-lg bg-slate-50 dark:bg-[#121824] border border-slate-200 dark:border-slate-800 mb-8 max-w-3xl">
+      <div class="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1 font-semibold">
+        Engineering Mindset & Approach
+      </div>
+      <p class="text-sm text-slate-700 dark:text-slate-300 italic">
+        "{personal.philosophy}"
+      </p>
+    </div>
+
+    <!-- Quick CTAs -->
+    <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
+      <a
+        href="#projects"
+        class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all hover:shadow focus:outline-none"
+      >
+        <span>View Case Studies</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </a>
+
+      <a
+        href={personal.resumePdfUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        download="Shaik_Saleem_Resume.pdf"
+        class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 transition-colors"
+      >
+        <span>Download Resume (PDF)</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+        </svg>
+      </a>
+
+      <button
+        id="hero-copy-email-btn"
+        type="button"
+        data-email={personal.email}
+        class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+        title="Copy email to clipboard"
+      >
+        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+        </svg>
+        <span id="hero-copy-text">Copy Email</span>
+      </button>
+    </div>
+
+    <!-- Academic and Social Meta Strip -->
+    <div class="pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-4">
+        <span>📍 {personal.location}</span>
+        <span>🎓 {personal.semester}</span>
+      </div>
+      <div class="flex items-center gap-3">
+        {socials.map((s) => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-blue-600 dark:hover:text-blue-400 underline underline-offset-4 transition-colors"
+          >
+            {s.name} ↗
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.getElementById('hero-copy-email-btn');
+  const copyText = document.getElementById('hero-copy-text');
+
+  copyBtn?.addEventListener('click', async () => {
+    const email = copyBtn.getAttribute('data-email');
+    if (email) {
+      try {
+        await navigator.clipboard.writeText(email);
+        if (copyText) {
+          copyText.textContent = 'Copied to clipboard! ✓';
+          setTimeout(() => {
+            copyText.textContent = 'Copy Email';
+          }, 2500);
+        }
+      } catch (err) {
+        // Fallback for clipboard
+        window.location.href = `mailto:${email}`;
+      }
+    }
+  });
+</script>

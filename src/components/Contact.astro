@@ -1,0 +1,98 @@
+---
+// Contact.astro
+import { portfolioData } from '../data/portfolioData';
+
+const { personal, socials } = portfolioData;
+---
+
+<section id="contact" class="py-16 md:py-20 border-b border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-[#080b12]/50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 text-center max-w-xl mx-auto">
+      <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">
+        <span>04 // Let's Connect</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Open for Internships & Inquiries
+      </h2>
+      <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+        I am currently seeking Summer 2027 technical internships, collaborative student projects, and open-source contributions. Feel free to reach out directly.
+      </p>
+    </div>
+
+    <!-- Contact Card -->
+    <div class="max-w-xl mx-auto p-6 sm:p-8 rounded-xl bg-white dark:bg-[#0e131f] border border-slate-200 dark:border-slate-800 shadow-xs text-center">
+      <!-- Email Copy Box -->
+      <div class="mb-6">
+        <label for="contact-email-display" class="block text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+          Direct Email
+        </label>
+        <div class="flex items-center justify-center gap-2">
+          <input
+            id="contact-email-display"
+            type="text"
+            readonly
+            value={personal.email}
+            class="px-4 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 font-mono text-sm text-slate-800 dark:text-slate-200 text-center w-full max-w-xs select-all focus:outline-none"
+          />
+          <button
+            id="contact-copy-btn"
+            type="button"
+            data-email={personal.email}
+            class="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-colors flex items-center gap-1.5 focus:outline-none"
+          >
+            <span id="contact-copy-label">Copy</span>
+          </button>
+        </div>
+        <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+          Or send directly via <a href={`mailto:${personal.email}`} class="text-blue-600 dark:text-blue-400 underline underline-offset-2">your default mail app</a>.
+        </p>
+      </div>
+
+      <!-- Outbound Social Cards -->
+      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 grid grid-cols-3 gap-3 mb-6">
+        {socials.map((s) => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-[#131926] transition-colors group"
+          >
+            <span class="block text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              {s.name}
+            </span>
+            <span class="block text-[11px] font-mono text-slate-400 dark:text-slate-500 truncate">
+              {s.handle}
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <!-- Privacy Notice -->
+      <p class="text-[11px] font-mono text-slate-400 dark:text-slate-500">
+        🛡️ Privacy Note: Phone numbers and physical addresses are excluded to prevent automated web harvesting.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.getElementById('contact-copy-btn');
+  const copyLabel = document.getElementById('contact-copy-label');
+
+  copyBtn?.addEventListener('click', async () => {
+    const email = copyBtn.getAttribute('data-email');
+    if (email) {
+      try {
+        await navigator.clipboard.writeText(email);
+        if (copyLabel) {
+          copyLabel.textContent = 'Copied! ✓';
+          setTimeout(() => {
+            copyLabel.textContent = 'Copy';
+          }, 2500);
+        }
+      } catch (e) {
+        window.location.href = `mailto:${email}`;
+      }
+    }
+  });
+</script>
