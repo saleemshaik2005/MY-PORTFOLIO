@@ -10,6 +10,37 @@ const {
   title = "Shaik Saleem | AI & Data Science Student — CBIT Hyderabad",
   description = "Personal portfolio of Shaik Saleem, undergraduate Artificial Intelligence and Data Science student at CBIT Hyderabad. Exploring machine learning, data pipelines, and software engineering."
 } = Astro.props;
+
+const siteUrl = "https://shaiksaleem.vercel.app";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shaik Saleem",
+  "url": `${siteUrl}/`,
+  "image": `${siteUrl}/images/shaik-saleem.jpg`,
+  "description": "Undergraduate student in Artificial Intelligence and Data Science at Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad.",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Chaitanya Bharathi Institute of Technology",
+    "alternateName": "CBIT",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "addressCountry": "India"
+    }
+  },
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Data Science"
+  ],
+  "sameAs": [
+    "https://github.com/saleemshaik2005",
+    "https://linkedin.com/in/saleemshaikatcbit",
+    "https://leetcode.com/u/saleem2005"
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -39,6 +70,9 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="theme-color" content="#F5ECDA" />
+
+    <!-- Schema.org Person JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body class="min-h-screen flex flex-col antialiased selection:bg-[#743014] selection:text-[#F5ECDA]">
     <a href="#main-content" class="skip-link">Skip to main content</a>
