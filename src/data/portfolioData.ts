@@ -154,6 +154,7 @@ export const portfolioData = {
       limitations: "Requires well-lit, non-reflective multi-angle photos for accurate PDP numeral height measurement; offline camera feed requires WebAssembly OCR acceleration.",
       keyTakeaways: "Learned how to translate complex statutory legal rules into deterministic validation algorithms and design intuitive viewfinder guides for field inspectors.",
       githubUrl: "https://github.com/saleemshaik2005/Software-System-to-check-compliance-of-Packaged-Commodities-under-Legal-Metrology-Rules-2011",
+      liveUrl: "https://inspacknksih2026.vercel.app/",
       image: "/images/projects/inspack_screenshot_main.png",
       subImage: "/images/projects/inspack_screenshot_audit.png",
       screenshots: [
@@ -178,6 +179,7 @@ export const portfolioData = {
       limitations: "Hybrid formula weights require ongoing calibration based on campus traffic; image storage is bounded by Supabase storage quotas.",
       keyTakeaways: "Integrating vector similarity search into relational databases, implementing strict RLS security boundaries, and designing user-centric anti-fraud challenges.",
       githubUrl: "https://github.com/saleemshaik2005/Portal-for-retrival-of-lost-items-in-the-college-CBIT",
+      liveUrl: "https://portal-for-retrival-of-lost-items-i.vercel.app/report/lost",
       image: "/images/projects/lostfound_screenshot_hero.png",
       subImage: "/images/projects/lostfound_screenshot_gemini.png",
       screenshots: [
