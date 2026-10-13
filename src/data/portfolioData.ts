@@ -2,8 +2,8 @@ export interface Project {
   id: string;
   title: string;
   tagline: string;
-  category: 'Full-Stack Web' | 'Data Science & Analytics' | 'Artificial Intelligence' | 'Systems & Tools';
-  status: 'Completed Project' | 'Exploratory Project' | 'Academic Project';
+  category: string;
+  status: string;
   problem: string;
   myContribution: string;
   stack: string[];
@@ -13,6 +13,9 @@ export interface Project {
   keyTakeaways: string;
   githubUrl: string;
   liveUrl?: string;
+  image?: string;
+  subImage?: string;
+  badge?: string;
 }
 
 export interface SkillCategory {
@@ -57,28 +60,29 @@ export const portfolioData = {
     semester: "Fifth-Semester Undergraduate",
     studyPeriod: "August 2024 – May 2028 (Expected)",
     availabilityStatus: "Open to Summer 2027 Internships & Technical Collaborations",
-    shortBio: "Undergraduate student at CBIT Hyderabad pursuing a B.E. in Artificial Intelligence and Data Science. Passionate about software engineering, structured data exploration, and algorithmic problem solving with clean, verifiable code.",
-    aboutStory: "My foundation began with algorithmic problem solving and web technologies, evolving into an interest in data-driven systems and machine learning. As a fifth-semester student at CBIT Hyderabad, I build practical software applications—from full-stack authenticated campus platforms to exploratory data analyses—focusing on clean architecture, SDLC principles, and data integrity.",
-    philosophy: "I prioritize understanding foundational principles over superficial claims. Whether developing an authenticated web application or analyzing complex distributions in datasets, I focus on verifiable logic, clear documentation, and steady improvement.",
+    shortBio: "Undergraduate student at CBIT Hyderabad pursuing a B.E. in Artificial Intelligence and Data Science. Passionate about software systems, multimodal document intelligence, semantic vector search, and clean algorithmic problem solving.",
+    aboutStory: "My foundation began with algorithmic problem solving and web systems, evolving into an active interest in multimodal artificial intelligence, vector search, and compliance engineering. As a fifth-semester student at CBIT Hyderabad, I build practical software applications—from an AI certificate verification system deployed for the college to Smart India Hackathon legal compliance tools and semantic vector recovery platforms—focusing on rigorous architecture, SDLC principles, and data integrity.",
+    philosophy: "I prioritize understanding foundational principles over superficial claims. Whether developing an authenticated web application with vector similarity search or analyzing complex distributions in datasets, I focus on verifiable logic, clear documentation, and steady improvement.",
     email: "saleemshaik.dev@gmail.com",
     resumePdfUrl: "/resume.pdf",
   },
 
   marqueeKeywords: [
     "Artificial Intelligence",
-    "Data Science",
+    "Multimodal Document OCR",
+    "Vector Search (pgvector)",
+    "Next.js 16 App Router",
     "Python",
+    "TypeScript",
     "Java",
     "C++ & C",
     "SQL & MySQL",
-    "Data Structures & Algorithms",
-    "Firebase Firestore",
+    "Supabase PostgreSQL",
     "Exploratory Data Analysis",
     "NumPy & Pandas",
-    "Operating Systems",
-    "Computer Networks",
+    "Smart India Hackathon",
     "CBIT Hyderabad",
-    "Full-Stack Development"
+    "SDLC & Full-Stack"
   ],
 
   quickFacts: [
@@ -111,36 +115,72 @@ export const portfolioData = {
 
   projects: [
     {
-      id: "cbit-lost-found",
-      title: "CBIT Lost & Found Campus Portal",
-      tagline: "A centralized, authenticated web portal for college students to report, track, and recover misplaced campus items.",
-      category: "Full-Stack Web",
-      status: "Completed Project",
-      problem: "College students regularly misplace belongings across large campus premises without a structured, verified platform to safely report items, moderate listings, or confirm recovery.",
-      myContribution: "Engineered web portal following SDLC principles; integrated Google Authentication; built administrative management dashboard with role-based access control (RBAC); implemented anonymous reporting, client-side image compression, and 24-hour submission rate limiting to prevent spam.",
-      stack: ["HTML5", "CSS3", "JavaScript (ES6)", "Firebase Firestore", "Firebase Authentication"],
-      dataSources: "Student-reported campus lost and found listings stored in Firestore.",
-      metricsOrOutcomes: "Delivered authenticated student verification, role-based listing moderation, and reduced upload bandwidth via client-side image compression.",
-      limitations: "Client-side image compression depends on device memory; database quotas governed by Firebase Spark tier limits.",
-      keyTakeaways: "Practical experience implementing role-based authorization, rate limiting, and balancing open student reporting with administrative moderation.",
-      githubUrl: "https://github.com/saleemshaik2005/Lost-Found-CBIT-website",
-      liveUrl: ""
+      id: "cbit-activity-points",
+      title: "CBIT Student Portfolio & Activity Points Verification Platform",
+      tagline: "Autonomous institutional MAR tracking and multimodal AI certificate OCR verification platform for CBIT Hyderabad.",
+      category: "Full-Stack & Multimodal AI",
+      status: "Live Academic Platform",
+      badge: "🌐 Live in Production",
+      problem: "Students at CBIT must complete 60 non-academic activity points (up to a 100-point cap) across Semesters I through VIII under official autonomous college regulations. Manual certificate verification created severe administrative bottlenecks for faculty mentors.",
+      myContribution: "Developed with peers in AI&DS Section 2, 5th Semester under faculty mentorship (Dr. Shobarani Salvadi, Dr. SHEENA MOHAMMED, Dr. Anireddy Srilakshmi, Ms. Talla Sai Sree, Dr. K. Radhika); engineered Next.js 16 App Router frontend; integrated multimodal AI document intelligence for automated certificate OCR (parsing certificate title, student name, issuing authority, completion date, credential IDs, and QR validation links); built automatic mapping to the 24 official CBIT Activity Categories; implemented faculty mentor verification drawer and 1-click official MAR PDF generation.",
+      stack: ["Next.js 16 (App Router)", "TypeScript", "Multimodal Document AI", "Tailwind CSS", "PDF Generation", "Vercel"],
+      dataSources: "Student-uploaded activity certificates, workshop credentials, NPTEL awards, and internship proofs across 24 official categories.",
+      metricsOrOutcomes: "Deployed live at cbit-activity-points.vercel.app; automates extraction of credential numbers, dates, and QR verification URLs; outputs official regulation-compliant MAR PDF sheets for autonomous accreditation.",
+      limitations: "OCR extraction accuracy depends on clarity and resolution of scanned documents; points overrides require faculty mentor confirmation.",
+      keyTakeaways: "Gained practical experience implementing multimodal document parsing, Next.js App Router state management, and building software that directly serves institutional compliance workflows.",
+      githubUrl: "https://github.com/saleemshaik2005/CBIT-Activity-Points",
+      liveUrl: "https://cbit-activity-points.vercel.app",
+      image: "/images/projects/cbit-crest.png"
+    },
+    {
+      id: "inspack-legal-metrology",
+      title: "Inspack 🛡️📦 — AI Legal Metrology Compliance Inspection System",
+      tagline: "Deterministic computer vision and OCR compliance inspection system for packaged commodities under Legal Metrology Rules, 2011.",
+      category: "AI & Computer Vision",
+      status: "Smart India Hackathon 2026",
+      badge: "🏆 SIH 2026 Problem SIH-26034",
+      problem: "Packaged commodities sold across retail stores, supermarkets, and e-commerce dark stores in India are legally mandated by the Ministry of Consumer Affairs to carry standard declarations. Enforcement agencies face massive logistical bottlenecks when manually verifying millions of packaging designs.",
+      myContribution: "Engineered for Smart India Hackathon 2026 (Problem Statement ID: SIH-26034, Ministry of Consumer Affairs, Food and Public Distribution) with Team Neural Knights; built multi-view packaging inspection workflow (Front, Back, Side) with on-screen Principal Display Panel (PDP) viewfinder guides; integrated OCR extraction with a deterministic rules engine validating Rule 6(1)(a) & 10 (manufacturer address & PIN), Rule 6(1)(c) & 13 (SI unit net quantity, banning archaic terms like dozen/gross), Rule 6(1)(e) & 18 (statutory MRP syntax & dual pricing detection), Rule 7 & 8 (PDP numeral/letter height & clear area clutter), Rule 9 (contrast checks), and Second Schedule standard pack sizes.",
+      stack: ["React / Vite", "TypeScript", "Tailwind CSS", "Computer Vision & OCR", "Deterministic Compliance Engine", "PDF Report Generator"],
+      dataSources: "Statutory rules and schedules under Legal Metrology Act, 2009 & Packaged Commodities Rules, 2011 across 19 commodity classes.",
+      metricsOrOutcomes: "Automates multi-rule statutory validation across 19 mandatory commodity classes; flags illegal unit symbols (e.g., 'gm/gms' vs 'g') and dual-pricing tampering; generates formal inspection PDF audit reports.",
+      limitations: "Requires well-lit, non-reflective multi-angle photos for accurate PDP numeral height measurement; offline camera feed requires WebAssembly OCR acceleration.",
+      keyTakeaways: "Learned how to translate complex statutory legal rules into deterministic validation algorithms and design intuitive viewfinder guides for field inspectors.",
+      githubUrl: "https://github.com/saleemshaik2005/Software-System-to-check-compliance-of-Packaged-Commodities-under-Legal-Metrology-Rules-2011",
+      image: "/images/projects/inspack_architecture.png",
+      subImage: "/images/projects/inspack_workflow.png"
+    },
+    {
+      id: "cbit-lost-found-ai",
+      title: "CBIT Lost & Found — AI-Powered Campus Retrieval Platform",
+      tagline: "Campus item recovery platform powered by Google Gemini 2.5 Flash, 768-D semantic vector search, and anti-fraud verification.",
+      category: "Full-Stack & Vector Search",
+      status: "Production Prototype",
+      badge: "⚡ pgvector + Gemini AI",
+      problem: "Lost property recovery on college campuses is disorganized and plagued by false claims, lack of verification, and no structured way to match descriptive student reports with found items.",
+      myContribution: "Engineered end-to-end full-stack platform using Next.js 15, Supabase (PostgreSQL 16), and Google Gemini 2.5 Flash; integrated multimodal attribute extraction from item photos (brand, model, color, distinguishing marks, damage); implemented 768-dimensional vector embeddings with text-embedding-004 and pgvector HNSW indexing; implemented multi-factor hybrid scoring algorithm combining vector cosine, category, brand, color, location, and time; built anti-fraud ownership challenges protected by PostgreSQL Row-Level Security (RLS); designed 1-on-1 private handover chat and Recharts analytics.",
+      stack: ["Next.js 15", "TypeScript", "Supabase (PostgreSQL + pgvector + RLS)", "Google Gemini 2.5 Flash", "Tailwind CSS", "shadcn/ui", "Recharts", "Vitest"],
+      dataSources: "Student-reported lost and found campus listings stored with vector embeddings.",
+      metricsOrOutcomes: "Sub-second semantic vector similarity queries; hybrid formula balances semantic intent with hard filters; zero unauthorized access to private proof answers due to strict RLS policies.",
+      limitations: "Hybrid formula weights require ongoing calibration based on campus traffic; image storage is bounded by Supabase storage quotas.",
+      keyTakeaways: "Integrating vector similarity search into relational databases, implementing strict RLS security boundaries, and designing user-centric anti-fraud challenges.",
+      githubUrl: "https://github.com/saleemshaik2005/Portal-for-retrival-of-lost-items-in-the-college-CBIT",
+      image: "/images/projects/cbit-campus-map.png"
     },
     {
       id: "traffic-accident-analysis",
       title: "Traffic Accident Data Analysis",
-      tagline: "Exploratory data analysis uncovering temporal trends, accident frequency patterns, and critical risk factors.",
+      tagline: "Exploratory data analysis uncovering temporal trends, environmental factors, and accident distribution patterns.",
       category: "Data Science & Analytics",
       status: "Exploratory Project",
-      problem: "Identifying key contributors to roadway collisions requires systematic data preprocessing, handling missing entries, and evaluating temporal distributions.",
-      myContribution: "Loaded and cleaned traffic accident dataset using Pandas; conducted exploratory data analysis (EDA) to investigate accident trends; generated visualizations examining high-risk time intervals and environmental correlations.",
+      problem: "Identifying critical contributors to traffic collisions requires systematic data preprocessing, handling missing entries, and evaluating multi-dimensional temporal distributions.",
+      myContribution: "Cleaned and preprocessed observational traffic collision datasets using Pandas; examined temporal distribution curves to identify high-risk time intervals; generated structured Matplotlib visualizations correlating road surface conditions, lighting, and incident frequency.",
       stack: ["Python", "NumPy", "Pandas", "Matplotlib", "Jupyter Notebook"],
       dataSources: "Observational traffic accident dataset.",
       metricsOrOutcomes: "Communicated distribution trends, isolated high-incident time windows, and visualized road condition patterns through structured Matplotlib figures.",
       limitations: "Observational retrospective study; does not account for real-time vehicular telematics or causal attribution.",
-      keyTakeaways: "Data hygiene and exploratory visualization are indispensable for understanding real-world patterns before drawing conclusions.",
-      githubUrl: "https://github.com/saleemshaik2005/MY-PORTFOLIO",
-      liveUrl: ""
+      keyTakeaways: "Data hygiene, missing value imputation, and distribution sanity checks are essential before drawing conclusions from observational data.",
+      githubUrl: "https://github.com/saleemshaik2005/MY-PORTFOLIO"
     }
   ] as Project[],
 
@@ -153,7 +193,7 @@ export const portfolioData = {
         { name: "Java", levelEvidence: "Practiced for object-oriented design and foundational algorithmic concepts." },
         { name: "SQL", levelEvidence: "Relational querying, joins, aggregations, and schema design (MySQL)." },
         { name: "C++ & C", levelEvidence: "Used for Data Structures, algorithm implementation, and memory concepts." },
-        { name: "JavaScript (ES6)", levelEvidence: "Core web development, DOM manipulation, asynchronous logic, and Firebase integration." },
+        { name: "JavaScript (ES6) & TypeScript", levelEvidence: "Full-stack development: Next.js, React, Node.js, asynchronous logic, and type-safe APIs." },
         { name: "HTML5 & CSS3", levelEvidence: "Responsive semantic markup, modern layout styling, and accessibility." }
       ]
     },
@@ -164,16 +204,16 @@ export const portfolioData = {
         { name: "Exploratory Data Analysis (EDA)", levelEvidence: "Systematic data inspection, missing value handling, and summary statistics." },
         { name: "NumPy & Pandas", levelEvidence: "Vectorized numerical computing, dataframe manipulation, grouping, and filtering." },
         { name: "Matplotlib", levelEvidence: "Generating informative charts, distribution plots, and trend visualizations." },
-        { name: "Machine Learning Concepts", levelEvidence: "Foundational supervised and unsupervised learning algorithms studied in curriculum." }
+        { name: "Multimodal AI & Vector Search", levelEvidence: "Integrated Gemini 2.5 Flash, OCR, and pgvector embeddings in campus platforms." }
       ]
     },
     {
       name: "Databases & Tools",
       description: "Database engines, authentication services, and daily engineering tools.",
       skills: [
+        { name: "PostgreSQL & pgvector", levelEvidence: "Relational schemas, vector cosine indexing (HNSW), and Row-Level Security (RLS)." },
         { name: "MySQL", levelEvidence: "Relational database querying, relational algebra, and schema normalization." },
-        { name: "Firebase Firestore", levelEvidence: "NoSQL document storage, real-time queries, and rule-based data security." },
-        { name: "Firebase Authentication", levelEvidence: "Integrated Google Auth and secure user sessions in campus projects." },
+        { name: "Firebase Firestore & Auth", levelEvidence: "NoSQL document storage, Google Authentication integration, and security rules." },
         { name: "Git & GitHub", levelEvidence: "Version control workflows, commit history, repository management, and collaboration." },
         { name: "Jupyter Notebook", levelEvidence: "Interactive computational notebooks for data exploration and visualization." }
       ]

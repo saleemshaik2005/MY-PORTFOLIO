@@ -9,55 +9,101 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="p-6 sm:p-9 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft mb-8">
+<article class="p-6 sm:p-9 rounded-2xl bg-[#FAF4E8] border border-[#E8D1A7] card-hover shadow-soft mb-10 overflow-hidden">
   <!-- Card Header -->
   <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-    <div class="flex items-center gap-2.5">
+    <div class="flex flex-wrap items-center gap-2">
       <span class="pill bg-[#E8D1A7]/60 border-[#D4BC8E] text-[#743014] font-bold">
         {project.category}
       </span>
-      <span class="text-xs font-mono text-[#84592B] font-medium">
+      <span class="text-xs font-mono text-[#84592B] font-semibold">
         ● {project.status}
       </span>
+      {project.badge && (
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-[#442D1C] text-[#F5ECDA]">
+          {project.badge}
+        </span>
+      )}
     </div>
     
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-3">
+      {project.liveUrl && (
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#743014] hover:bg-[#56230E] text-[#F5ECDA] shadow-xs hover:shadow-md transition-all active:scale-95"
+          title="Launch live deployed application"
+        >
+          <span>Launch Live App ↗</span>
+        </a>
+      )}
       {project.githubUrl && (
         <a
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-1.5 text-xs font-bold text-[#442D1C] hover:text-[#743014] underline underline-offset-4 decoration-[#D4BC8E] transition-colors"
-          title="View source on GitHub"
+          title="View source repository on GitHub"
         >
-          <span>GitHub Repo</span>
+          <span>GitHub</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
           </svg>
         </a>
       )}
-      {project.liveUrl && (
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1 text-xs font-bold text-[#743014] hover:underline"
-        >
-          <span>Live Demo ↗</span>
-        </a>
-      )}
     </div>
   </div>
 
-  <!-- Title & Tagline -->
-  <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#442D1C] mb-2.5">
-    {project.title}
-  </h3>
-  <p class="text-base text-[#74563E] leading-relaxed mb-6 font-medium">
-    {project.tagline}
-  </p>
+  <!-- Title & Tagline with Optional Logo / Crest -->
+  <div class="flex items-start gap-4 mb-3">
+    {project.image && project.image.includes('cbit-crest') && (
+      <img
+        src={project.image}
+        alt="CBIT Crest"
+        class="w-14 h-14 object-contain rounded-xl p-1 bg-[#F5ECDA] border border-[#E8D1A7] shrink-0"
+        loading="lazy"
+      />
+    )}
+    <div>
+      <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#442D1C] leading-snug">
+        {project.title}
+      </h3>
+      <p class="text-base text-[#74563E] leading-relaxed mt-1 font-medium">
+        {project.tagline}
+      </p>
+    </div>
+  </div>
 
-  <!-- Deep Dive Grid -->
+  <!-- Featured Technical Architecture Diagrams / Visuals -->
+  {project.image && !project.image.includes('cbit-crest') && (
+    <div class="my-6 p-3 rounded-xl bg-[#F5ECDA]/80 border border-[#E8D1A7] overflow-hidden">
+      <div class="text-[11px] font-mono uppercase text-[#84592B] font-bold mb-2 flex items-center justify-between">
+        <span>System Architecture & Verification Flow</span>
+        <span class="text-[10px] text-[#74563E]">Verified Repository Asset</span>
+      </div>
+      <div class="rounded-lg overflow-hidden border border-[#D4BC8E]/60 bg-white shadow-2xs">
+        <img
+          src={project.image}
+          alt={`${project.title} Architecture Diagram`}
+          class="w-full max-h-80 object-contain hover:scale-[1.01] transition-transform duration-300"
+          loading="lazy"
+        />
+      </div>
+      {project.subImage && (
+        <div class="mt-3 rounded-lg overflow-hidden border border-[#D4BC8E]/60 bg-white shadow-2xs">
+          <img
+            src={project.subImage}
+            alt={`${project.title} User Workflow Diagram`}
+            class="w-full max-h-80 object-contain hover:scale-[1.01] transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+      )}
+    </div>
+  )}
+
+  <!-- Deep Dive Grid: Problem & My Contribution -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
     <!-- Problem Context -->
     <div class="p-4 rounded-xl bg-[#F5ECDA]/70 border border-[#E8D1A7]">
@@ -84,11 +130,11 @@ const { project } = Astro.props;
   <div class="mb-6 p-4 rounded-xl bg-[#E8D1A7]/30 border border-[#D4BC8E] text-xs sm:text-sm">
     <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
       <span class="font-mono uppercase font-bold text-[#743014] text-[11px]">
-        Verified Outcomes & Metrics
+        Verified Outcomes & Technical Highlights
       </span>
       {project.dataSources && (
         <span class="text-[11px] font-mono text-[#84592B]">
-          Provenance: {project.dataSources}
+          Data: {project.dataSources}
         </span>
       )}
     </div>
@@ -103,7 +149,7 @@ const { project } = Astro.props;
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
       </svg>
-      <span>Limitations & Intellectual Honesty</span>
+      <span>Limitations & Engineering Reflection</span>
     </div>
     <p class="mb-1.5 text-[#74563E]">
       <strong class="font-bold text-[#442D1C]">Known Trade-off:</strong> {project.limitations}
