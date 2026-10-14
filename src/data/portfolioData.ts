@@ -40,6 +40,9 @@ export interface EducationEntry {
 export interface Course {
   title: string;
   focus: string;
+  courseCode?: string;
+  semester?: string;
+  status?: string;
 }
 
 export interface Certification {
@@ -281,14 +284,62 @@ export const portfolioData = {
   ] as EducationEntry[],
 
   relevantCoursework: [
-    { title: "Design and Analysis of Algorithms", focus: "Divide-and-conquer, dynamic programming, graph traversal, and complexity analysis." },
-    { title: "Database Management Systems", focus: "Relational algebra, SQL, normalization, concurrency control, and transactions." },
-    { title: "Machine Learning", focus: "Mathematical formulation of learning algorithms, evaluation metrics, and optimization." },
-    { title: "Operating Systems", focus: "Process scheduling, thread synchronization, memory management, and file systems." },
-    { title: "Computer Networks", focus: "OSI and TCP/IP protocol stack, routing, socket communication, and packet flow." },
-    { title: "Enterprise Application Development", focus: "Architectural tiers, service communication, and web enterprise patterns." },
-    { title: "Computer Architecture", focus: "Instruction set architecture, pipelining, cache memory hierarchy, and datapath design." },
-    { title: "Software Engineering", focus: "Software Development Life Cycle (SDLC) models, testing strategies, and quality assurance." }
+    {
+      title: "Design and Analysis of Algorithms",
+      courseCode: "22CSC14N",
+      semester: "Semester III",
+      status: "Completed",
+      focus: "Asymptotic complexity bounds, divide-and-conquer, greedy optimization, dynamic programming, backtracking, and graph traversal algorithms."
+    },
+    {
+      title: "Data Structures using C++",
+      courseCode: "22ITC20N",
+      semester: "Semester II",
+      status: "Completed",
+      focus: "Object-oriented C++, abstract data types, linked lists, stacks, queues, binary search trees, AVL trees, heaps, and hash tables."
+    },
+    {
+      title: "Fundamentals of Machine Learning",
+      courseCode: "22ADC41N",
+      semester: "Semester IV",
+      status: "Completed",
+      focus: "Supervised and unsupervised learning, decision trees, support vector machines, regularized regression, PCA dimensionality reduction, and clustering."
+    },
+    {
+      title: "Exploratory Data Analysis and Visualization",
+      courseCode: "22ADC31N",
+      semester: "Semester III",
+      status: "Completed",
+      focus: "NumPy numerical computing, Pandas data cleaning and wrangling, group aggregation, time-series operations, and Matplotlib/Seaborn visualizations."
+    },
+    {
+      title: "Database Management Systems",
+      courseCode: "22CSC11N",
+      semester: "Semester IV",
+      status: "Completed",
+      focus: "Relational algebra, SQL queries and joins, schema normalization (1NF–BCNF), B+ Tree indexing, and ACID transactions and concurrency control."
+    },
+    {
+      title: "Enterprise Application Development",
+      courseCode: "22ITC08N",
+      semester: "Semester IV",
+      status: "Completed",
+      focus: "Full-stack web architecture, React.js components and state management, Node.js and Express RESTful APIs, and MongoDB document modeling."
+    },
+    {
+      title: "Mathematical and Statistical Foundations",
+      courseCode: "22MTC07",
+      semester: "Semester III",
+      status: "Completed",
+      focus: "Measures of dispersion, conditional probability, Bayes' theorem, probability distributions, linear regression, and statistical hypothesis testing."
+    },
+    {
+      title: "Operating Systems",
+      courseCode: "22CSC15N",
+      semester: "Semester V",
+      status: "In Progress",
+      focus: "Process lifecycle and CPU scheduling, thread synchronization, deadlocks, virtual memory paging, and Unix/Linux file systems."
+    }
   ] as Course[],
 
   certifications: [

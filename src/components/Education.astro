@@ -86,13 +86,22 @@ const { educationHistory, relevantCoursework, certifications } = portfolioData;
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {relevantCoursework.map((course) => (
-              <div class="p-3.5 rounded-xl bg-[#FAF4E8] border border-[#D4BC8E] hover:border-[#84592B] transition-all card-hover shadow-2xs">
-                <span class="block text-xs font-bold text-[#442D1C] mb-1">
-                  {course.title}
-                </span>
-                <span class="block text-[11px] text-[#74563E] leading-snug">
-                  {course.focus}
-                </span>
+              <div class="p-3.5 rounded-xl bg-[#FAF4E8] border border-[#D4BC8E] hover:border-[#84592B] transition-all card-hover shadow-2xs flex flex-col justify-between">
+                <div>
+                  <div class="flex items-start justify-between gap-1.5 mb-1">
+                    <span class="block text-xs font-bold text-[#442D1C] leading-snug">
+                      {course.title}
+                    </span>
+                    {course.status === "In Progress" && (
+                      <span class="pill py-0.5 px-2 bg-[#84592B]/15 text-[#84592B] border border-[#84592B]/25 font-mono text-[9px] font-bold shrink-0">
+                        In Progress · Sem V
+                      </span>
+                    )}
+                  </div>
+                  <span class="block text-[11px] text-[#74563E] leading-snug">
+                    {course.focus}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
